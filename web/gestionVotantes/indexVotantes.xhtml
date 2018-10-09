@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <!-- css -->
+        <link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../resources/css/fancybox/jquery.fancybox.css" rel="stylesheet"/> 
+        <link href="../resources/css/flexslider.css" rel="stylesheet" /> 
+        <link href="../resources/css/style.css" rel="stylesheet" />
+        <link href="../resources/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../resources/js/jquery-1.12.0.min.js"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <script src="../resources/js/alertify.js"></script>
+        <script src="../resources/js/jquery.dataTables.min.js"></script>
+        <script src="../resources/js/dataTables.bootstrap.min.js"></script>
+        <title>Administrador General</title>
+    </h:head>
+    <h:body>
+        <!-- start header -->
+        <header>
+            <div class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img src="../resources/img/logo.png"/></a>
+                    </div>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="index.html">Inicio</a></li> 
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Elecciones <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about.html">Nueva Elección</a></li>
+                                    <li><a href="#">Gestionar Elecciones</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Candidatos <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about.html">Nuevo Candidato</a></li>
+                                    <li><a href="#">Gestionar Candidatos</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about.html">Nuevo Usuario</a></li>
+                                    <li><a href="#">Gestionar Usuarios</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Departamentos <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about.html">Nuevo Departamento</a></li>
+                                    <li><a href="#">Gestionar Departamentos</a></li>
+                                </ul>
+                            </li> 
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Municipios <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about.html">Nuevo Municipio</a></li>
+                                    <li><a href="#">Gestionar Municipios</a></li>
+                                </ul>
+                            </li>  
+                            <li class="dropdown">
+                                <a href="#" class="fa fa-user" data-toggle="dropdown"> <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about.html">Cambiar Contraseña</a></li>
+                                    <li><a href="#">Cerrar Sesión</a></li>
+                                </ul>
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- end header -->
+
+        <!-- Contenido -->
+    
+        <!-- Fin Contenido -->
+
+
+        <!--Footer-->
+
+        <div id="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <center><img src="../resources/img/logoInvert.png"/></center>
+                    <center>Administración de Votaciones</center>
+                </div>
+            </div>
+        </div>
+
+        <h:outputScript rendered="#{not empty flash.exito}">
+            alertify.success('#{flash.exito}');
+        </h:outputScript>
+
+        <h:outputScript rendered="#{not empty flash.fracaso}">
+            alertify.error('#{flash.fracaso}');
+        </h:outputScript>
+        <!--Fin Footer-->
+    </h:body>
+</html>
+
