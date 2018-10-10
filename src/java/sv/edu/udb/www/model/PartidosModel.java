@@ -27,6 +27,10 @@ public class PartidosModel {
         Query query = em.createNamedQuery("PartidosEntity.findAll");
         return query.getResultList();
     }
+    
+    public PartidosEntity obtenerPartido(String id){
+        return em.find(PartidosEntity.class, id);
+    }
 
     public int insertarPartido(PartidosEntity partido){
         try{
