@@ -1,0 +1,32 @@
+
+/* Estilo "nuevo ciudadano" */
+
+#dui{
+    margin-top: 3%;
+    width: 51%;
+}
+
+#nombre, #apellido{
+    margin-top: 2%;
+}
+
+#fechaNacimi{
+    margin-top: 2%;
+}
+
+#direcc{
+    margin-top: 2%;
+}
+
+#url{
+    margin-top: 2%;
+}
+
+#centro{
+    margin-top: 2%;
+    margin-bottom: 4.5%;
+}
+
+#Aceptar{
+    margin-left: 33%;
+}

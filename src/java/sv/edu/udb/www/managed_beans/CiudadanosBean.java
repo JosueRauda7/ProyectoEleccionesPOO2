@@ -1,5 +1,6 @@
 package sv.edu.udb.www.managed_beans;
 
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -14,21 +15,20 @@ public class CiudadanosBean {
     @EJB
     private CiudadanosModel ciudadanosModel;
     
+    List<CiudadanosEntity> listaCiudadanos;
     private CiudadanosEntity ciudadanos = new CiudadanosEntity();
     
     
     public CiudadanosBean() {
     }
 
-    public CiudadanosEntity getCiudadanos() {
-        return ciudadanos;
-    }
 
-    public void setCiudadanos(CiudadanosEntity ciudadanos) {
-        this.ciudadanos = ciudadanos;
-    }
-    
     //Métodos
+    
+    public List<CiudadanosEntity> getListaCiudadanos(){
+        listaCiudadanos = ciudadanosModel.listarCiudadanos();
+        return listaCiudadanos;
+    }
     
     public String ingresarCiudadano(){
         if(ciudadanosModel.ingresarCiudadanos(ciudadanos) == 0){
@@ -37,6 +37,14 @@ public class CiudadanosBean {
         }
         JsfUtils.addFlashMessage("exito", "Ciudadano insertado exitosamente");
         return "/gestionVotantes/ingresarCiudadano?faces-redirect=true";
+    }
+    
+    public CiudadanosEntity getCiudadanos() {
+        return ciudadanos;
+    }
+
+    public void setCiudadanos(CiudadanosEntity ciudadanos) {
+        this.ciudadanos = ciudadanos;
     }
     
 }

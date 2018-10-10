@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="titulo"/></title>
+        <h:outputStylesheet name="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <h:outputStylesheet name="https://use.fontawesome.com/releases/v5.0.6/css/all.css" />
+        <h:outputStylesheet name="estiloVotantes/css/animate.css" />
+        <h:outputStylesheet name="estiloVotantes/css/styles.css" />
+        <h:outputStylesheet name="estiloVotantes/font/css/font-awesome.min.css" />        
+    </h:head>
+
+    <h:body>
+        <div id="#top"></div>
+        <section id="home" class="timer">
+            <div class="banner-container wow fadeIn" style="height: 248px;">
+                <div class="container">
+                    <!--<div class="heading text-center" style="height: 50px;">
+                        <br><h4>Tiempo restante</h4>
+                    </div>-->
+                    <div class="countdown styled" ></div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="page-section colord">
+            <div class="container">    
+                <div id="content" class="center_content">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+            </div>
+        </section>
+        <!--<section class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center"> Sistema de elecciones - UDB </div>
+                </div>
+            </div>
+        </section>-->
+
+        <h:outputScript name="estiloVotantes/js/modernizr-latest.js"/>
+        <h:outputScript name="estiloVotantes/js/jquery-1.8.2.min.js"/>
+        <h:outputScript name="estiloVotantes/js/bootstrap.min.js"/>
+        <h:outputScript name="estiloVotantes/js/jquery.nav.js"/>
+        <h:outputScript name="estiloVotantes/js/waypoints.js"/>
+        <h:outputScript name="estiloVotantes/js/Backstretch.js"/>
+        <h:outputScript name="estiloVotantes/contact/jqBootstrapValidation.js"/>
+        <h:outputScript name="estiloVotantes/contact/contact_me.js"/>
+        <h:outputScript name="estiloVotantes/js/custom.js"/>
+        <h:outputScript name="estiloVotantes/js/jquery.countdown.js"/>
+    </h:body>
+</html>

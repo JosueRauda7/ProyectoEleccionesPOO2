@@ -3,37 +3,50 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./../WEB-INF/templateRNPN.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:define name="titulo">
-        titulo
+        Nuevo ciudadano
     </ui:define>
 
     <ui:define name="content">
         <h1 class="text-center" style="margin-top: -5%;"> Nuevo ciudadano </h1><br></br>
-        <div class="col col-md-6">
+        <div class="col col-md-12">
             <h:form>
-                <div class="form-group">
-                    <h:outputLabel value="DuiCiudadano:" for="duiCiudadano" />
-                    <h:inputText id="duiCiudadano" value="#{ciudadanosBean.ciudadanos.duiCiudadano}" title="DuiCiudadano" required="true" requiredMessage="The DuiCiudadano field is required."/>
+                <div class="form-group col-md-8" id="dui">
+                    <h:inputText id="duiCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.duiCiudadano}" title="DuiCiudadano" a:placeholder="Ingresa el DUI" required="true" requiredMessage="The DuiCiudadano field is required."/>
                 </div>
-                <h:outputLabel value="NombresCiudadano:" for="nombresCiudadano" />
-                <h:inputText id="nombresCiudadano" value="#{ciudadanosBean.ciudadanos.nombresCiudadano}" title="NombresCiudadano" required="true" requiredMessage="The NombresCiudadano field is required."/>
-                <h:outputLabel value="ApellidosCiudadano:" for="apellidosCiudadano" />
-                <h:inputText id="apellidosCiudadano" value="#{ciudadanosBean.ciudadanos.apellidosCiudadano}" title="ApellidosCiudadano" required="true" requiredMessage="The ApellidosCiudadano field is required."/>
-                <h:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
-                <h:inputText id="fechaNacimiento" value="#{ciudadanosBean.ciudadanos.fechaNacimiento}" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required.">
-                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                </h:inputText>
-                <h:outputLabel value="Direccion:" for="direccion" />
-                <h:inputText id="direccion" value="#{ciudadanosBean.ciudadanos.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                <h:outputLabel value="UrlFoto:" for="urlFoto" />
-                <h:inputText id="urlFoto" value="#{ciudadanosBean.ciudadanos.urlFoto}" title="UrlFoto" required="true" requiredMessage="The UrlFoto field is required."/>
-                <h:outputLabel value="IdCentroVotacion:" for="idCentroVotacion" />
-                <h:selectOneMenu id="idCentroVotacion" value="#{ciudadanosBean.ciudadanos.idCentroVotacion}" title="IdCentroVotacion" required="true" requiredMessage="The IdCentroVotacion field is required.">
-                    <!-- TODO: update below reference to list of available items-->
-                    <f:selectItems value="#{fixme}"/>
-                </h:selectOneMenu>
+                <div class="form-group col-md-6" id="nombre">
+                    <h:inputText id="nombresCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.nombresCiudadano}" title="NombresCiudadano" a:placeholder="Ingresa el nombre" required="true" requiredMessage="The NombresCiudadano field is required."/>
+                </div>                    
+                <div class="form-group col-md-6" id="apellido">
+                    <h:inputText id="apellidosCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.apellidosCiudadano}" title="ApellidosCiudadano" a:placeholder="Ingresa el apellido" required="true" requiredMessage="The ApellidosCiudadano field is required."/>
+
+                </div>
+                <div class="form-group col-md-6" id="fechaNacimi">
+                    <h:inputText id="fechaNacimiento" class="form-control" value="#{ciudadanosBean.ciudadanos.fechaNacimiento}" title="FechaNacimiento" a:placeholder="Ingresa la fecha de nacimiento - (31/12/2000)" required="true" requiredMessage="The FechaNacimiento field is required.">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>                
+                </div>
+                <div class="form-group col-md-6" id="direcc">
+                    <h:inputText id="direccion" class="form-control" value="#{ciudadanosBean.ciudadanos.direccion}" title="Direccion" a:placeholder="Ingresa la dirección" required="true" requiredMessage="The Direccion field is required."/>
+
+                </div>
+                <div class="form-group col-md-6" id="url">
+                    <h:outputLabel value="Foto:" for="urlFoto" />
+                    <h:inputText id="urlFoto" class="form-control" value="#{ciudadanosBean.ciudadanos.urlFoto}" title="UrlFoto" required="true" requiredMessage="The UrlFoto field is required."/>
+
+                </div>
+                <div class="form-group col-md-6" id="centro">
+                    <h:outputLabel value="Elige el centro de votación:" for="idCentroVotacion" />
+                    <h:selectOneMenu id="idCentroVotacion" class="form-control" value="#{ciudadanosBean.ciudadanos.idCentroVotacion}" title="IdCentroVotacion" required="true" requiredMessage="The IdCentroVotacion field is required.">
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                </div>
+                <div id="Aceptar">
+                    <h:commandButton value="Aceptar" class="btn btn-success col-md-6" action="#{ciudadanosBean.ingresarCiudadano()}" />
+                </div>
             </h:form>
         </div>
 
