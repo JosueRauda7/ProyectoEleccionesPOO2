@@ -16,6 +16,20 @@ public class EleccionesModel {
     @PersistenceContext(unitName = "ProyectoPooPeriodo2PU")
     private EntityManager em;
 
+    //Listar elecciones presidenciales
+    public List<EleccionesEntity> listarEleccionesPresidenciales(){
+        Query query = em.createQuery("select e from EleccionesEntity e where e.idTipoEleccion.idTipoEleccion = 1");
+        return query.getResultList();
+    }
+    
+    
+    //Listar elecciones de consejo municipal
+    public List<EleccionesEntity> listarEleccionesConsejoMunicipal(){
+        Query query = em.createQuery("select e from EleccionesEntity e where e.idTipoEleccion.idTipoEleccion = 2");
+        return query.getResultList();
+    }
+    
+    
     //Tipo de elecciones
     public List<TipoeleccionesEntity> listarTipoElecciones(){
         Query query = em.createNamedQuery("TipoeleccionesEntity.findAll",TipoeleccionesEntity.class);
