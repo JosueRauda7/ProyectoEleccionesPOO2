@@ -15,7 +15,7 @@
         <script src="../resources/js/alertify.js"></script>
         <script src="../resources/js/jquery.dataTables.min.js"></script>
         <script src="../resources/js/dataTables.bootstrap.min.js"></script>
-        <title>Administrador General</title>
+        <title>Index|votacion</title>
     </h:head>
     <h:body>
         <!-- start header -->
@@ -34,40 +34,14 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="index.html">Inicio</a></li> 
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Elecciones <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Ver ciudadanos<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nueva Elección</a></li>
-                                    <li><a href="#">Gestionar Elecciones</a></li>
+                                    <li><a href="about.html">ver ciudadanos inscritos</a></li>
+                                    <li><a href="#">Ver ciudadanos jrv</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Candidatos <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Candidato</a></li>
-                                    <li><a href="#">Gestionar Candidatos</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Usuario</a></li>
-                                    <li><a href="#">Gestionar Usuarios</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Departamentos <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Departamento</a></li>
-                                    <li><a href="#">Gestionar Departamentos</a></li>
-                                </ul>
-                            </li> 
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Municipios <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Municipio</a></li>
-                                    <li><a href="#">Gestionar Municipios</a></li>
-                                </ul>
-                            </li>  
+                           
+                            
                             <li class="dropdown">
                                 <a href="#" class="fa fa-user" data-toggle="dropdown"> <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -83,7 +57,14 @@
         <!-- end header -->
 
         <!-- Contenido -->
-    
+        <section  class="container">
+            <h1 class="text-center">Bienvenido al proceso de votacion</h1>
+            
+            <h:form>
+                
+                <h:commandButton class="btn btn-success" value="Iniciar votación" />
+            </h:form>
+        </section>
         <!-- Fin Contenido -->
 
 
@@ -93,7 +74,7 @@
             <div class="container">
                 <div class="row">
                     <center><img src="../resources/img/logoInvert.png"/></center>
-                    <center>Administración de Votaciones</center>
+                    <center>Proceso votación</center>
                 </div>
             </div>
         </div>
