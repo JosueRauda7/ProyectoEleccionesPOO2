@@ -17,6 +17,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.HttpServletRequest;
 import sv.edu.udb.www.entities.CentrovotacionEntity;
+import sv.edu.udb.www.entities.CiudadanosEntity;
 import sv.edu.udb.www.entities.EleccionesEntity;
 import sv.edu.udb.www.entities.JrvEntity;
 import sv.edu.udb.www.model.PresidentejrvModel;
@@ -35,12 +36,22 @@ public class PresidentejrvBean {
 
     HttpServletRequest request = JsfUtils.getRequest();
     EleccionesEntity eleccion = new EleccionesEntity();
+    CiudadanosEntity ciudadano = new CiudadanosEntity();
     JrvEntity jrv = new JrvEntity();
 
     public PresidentejrvBean() {
         request.getSession().setAttribute("valor", 1);
     }
 
+    public CiudadanosEntity getCiudadano() {
+        return ciudadano;
+    }
+
+    public void setCiudadano(CiudadanosEntity ciudadano) {
+        this.ciudadano = ciudadano;
+    }
+
+    
     public List<EleccionesEntity> getObtenerEleccion() {
         return presidentejrvModel.listaEleccionPresidente((int) request.getSession().getAttribute("valor"));
     }
@@ -68,7 +79,7 @@ public class PresidentejrvBean {
             if(presidentejrvModel.activarJrv(jrv)==0){
             return null;
             }else{
-            return "";
+            return "verificarVotante";
             }                      
         } catch (ParseException ex) {
             Logger.getLogger(PresidentejrvBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,5 +87,13 @@ public class PresidentejrvBean {
         }
       
     }
-
+    
+    public String verificarCiudadano(){
+        ciudadano = presidentejrvModel.verificarCiudadano(ciudadano.getDuiCiudadano());
+    if(ciudadano==null){
+       return null;
+    }else{
+     return "procesoVoto";
+    }
+    }
 }

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import sv.edu.udb.www.entities.CentrovotacionEntity;
+import sv.edu.udb.www.entities.CiudadanosEntity;
 import sv.edu.udb.www.entities.EleccionesEntity;
 import sv.edu.udb.www.entities.JrvEntity;
 
@@ -55,5 +56,9 @@ public class PresidentejrvModel {
         } catch (Exception e) {
             return 0;
         }
+    }
+    
+    public CiudadanosEntity verificarCiudadano(String codigo){
+     return em.find(CiudadanosEntity.class, codigo);     
     }
 }
