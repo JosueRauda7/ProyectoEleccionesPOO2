@@ -62,7 +62,55 @@
             
             <h:form>
                 
-                <h:commandButton class="btn btn-success" value="Iniciar votación" />
+                <h:commandButton  class="btn btn-success" value="Iniciar votación" />
+                
+                        <h1><h:outputText value="List"/></h1>
+                        <h:dataTable value="#{presidentejrvBean.obtenerEleccion}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdEleccion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEleccion}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DescripcionEleccion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descripcionEleccion}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaInicio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaInicio}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaRegistro"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaRegistro}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaFinRegistro"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFinRegistro}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdTipoEleccion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTipoEleccion}"/>
+                            </h:column>
+                        </h:dataTable>
+             
+               
             </h:form>
         </section>
         <!-- Fin Contenido -->
