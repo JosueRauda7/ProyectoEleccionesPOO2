@@ -15,8 +15,10 @@ public class PresidentejrvModel {
     private EntityManager em;
 
     public List<EleccionesEntity> listaEleccionPresidente(int valor){
-    Query query = em.createNativeQuery("SELECT e.* FROM miembrojrv m INNER JOIN jrv j ON m.IdJrv = j.IdJrv INNER JOIN elecciones e on j.IdEleccion = e.IdEleccion WHERE m.IdMiembroJrv = :valor");
-    query.setParameter("valor", valor);
+        System.out.println("Ingreso");
+    Query query = em.createNativeQuery("SELECT e.* FROM miembrojrv m INNER JOIN jrv j ON m.IdJrv = j.IdJrv INNER JOIN elecciones e on j.IdEleccion = e.IdEleccion WHERE m.IdMiembroJrv = ?", EleccionesEntity.class);
+    query.setParameter(1, valor);
+        
     return query.getResultList();
     }
     

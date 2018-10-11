@@ -62,11 +62,10 @@
             
             <h:form>
                 
-                <h:commandButton  class="btn btn-success" value="Iniciar votación" />
                 
-                        <h1><h:outputText value="List"/></h1>
-                        <h:dataTable value="#{presidentejrvBean.obtenerEleccion}" var="item">
-                            <h:column>
+                <h:dataTable value="#{presidentejrvBean.obtenerEleccion}" style="margin-top: 5%;" var="item" class="table table-bordered">
+                            
+                            <h:column >
                                 <f:facet name="header">
                                     <h:outputText value="IdEleccion"/>
                                 </f:facet>
@@ -103,13 +102,15 @@
                                 </h:outputText>
                             </h:column>
                             <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdTipoEleccion"/>
+                                <f:facet name="header" >
+                                    <h:outputText value="Tipo eleccion"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idTipoEleccion}"/>
+                                <h:outputText value="#{item.idTipoEleccion.tipoEleccion}"/>
                             </h:column>
                         </h:dataTable>
-             
+                <h:commandButton  class="btn btn-success center-block" style="margin-top: 10%;margin-bottom: 5%;" value="Iniciar votación" />
+                
+                        
                
             </h:form>
         </section>
