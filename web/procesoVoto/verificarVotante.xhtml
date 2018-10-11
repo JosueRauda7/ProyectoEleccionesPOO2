@@ -61,10 +61,15 @@
             <h1 class="text-center">Bienvenido al proceso de votacion</h1>
             <div class="center-block" style="border: solid black 2px;width: 70%; margin-top: 6%;margin-bottom: 6%;">
             <h1 class="text-center">Verificacion votantes</h1>
+             <h:panelGroup class="alert alert-danger" layout="block" rendered="#{not empty facesContext.messageList}">
+                <h:messages />
+                </h:panelGroup>
             <h:form class="row">    
                 <div class="form-group center-block" style="width: 30%;"> 
                             <h:outputLabel value="DuiCiudadano:" class="text-center" for="duiCiudadano" />
-                            <h:inputText class="form-control" id="duiCiudadano" value="#{presidentejrvBean.ciudadano.duiCiudadano}" title="DuiCiudadano" required="true" requiredMessage="The DuiCiudadano field is required."/>
+                            <h:inputText class="form-control" id="duiCiudadano" value="#{presidentejrvBean.ciudadano.duiCiudadano}" title="DuiCiudadano" required="true" requiredMessage="El dui del ciudadano es requerido" validatorMessage="El dui no tiene el formato correcto">
+                                <f:validateRegex pattern="[0-9]{8}-[0-9]{1}"/>
+                            </h:inputText>
                         </div>
                 <h:commandButton  class="btn btn-success center-block" action="#{presidentejrvBean.verificarCiudadano()}" style="margin-top: 3%;"  value="Verificar votante" />
             </h:form>

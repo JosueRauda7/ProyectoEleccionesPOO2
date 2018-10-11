@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package sv.edu.udb.www.managed_beans;
+
 import java.util.Calendar;
 import java.util.List;
 import java.text.DateFormat;
@@ -51,13 +52,12 @@ public class PresidentejrvBean {
         this.ciudadano = ciudadano;
     }
 
-    
     public List<EleccionesEntity> getObtenerEleccion() {
         return presidentejrvModel.listaEleccionPresidente((int) request.getSession().getAttribute("valor"));
     }
-    
-    public String nombrePresidente(){
-    return presidentejrvModel.nombrePresidente((int) request.getSession().getAttribute("valor"));
+
+    public String nombrePresidente() {
+        return presidentejrvModel.nombrePresidente((int) request.getSession().getAttribute("valor"));
     }
 
     public List<CentrovotacionEntity> getListaCentro() {
@@ -76,24 +76,25 @@ public class PresidentejrvBean {
             DateFormat hora2 = new SimpleDateFormat("HH:mm:ss");
             Date convertido = hora2.parse(hora);
             jrv.setHoraApertura(convertido);
-            if(presidentejrvModel.activarJrv(jrv)==0){
-            return null;
-            }else{
-            return "verificarVotante";
-            }                      
+            if (presidentejrvModel.activarJrv(jrv) == 0) {
+                return null;
+            } else {
+                return "verificarVotante";
+            }
         } catch (ParseException ex) {
             Logger.getLogger(PresidentejrvBean.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-      
+
     }
-    
-    public String verificarCiudadano(){
+
+    public String verificarCiudadano() {
         ciudadano = presidentejrvModel.verificarCiudadano(ciudadano.getDuiCiudadano());
-    if(ciudadano==null){
-       return null;
-    }else{
-     return "procesoVoto";
-    }
+        if (ciudadano == null) {
+            JsfUtils.addFlashMessage("fracaso", "No se puede eliminar esta editorial");
+            return null;
+        } else {
+            return "procesoVoto";
+        }
     }
 }
