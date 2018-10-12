@@ -9,13 +9,12 @@
         <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet"/> 
         <link href="css/flexslider.css" rel="stylesheet" /> 
         <link href="css/style.css" rel="stylesheet" />
-        <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/alertify.js"></script>
         <script src="js/jquery.dataTables.min.js"></script>
         <script src="js/dataTables.bootstrap.min.js"></script>
-        <title>Administrador General</title>
+        <title>Administrador Departamental</title>
     </h:head>
     <h:body>
         <!-- start header -->
@@ -28,46 +27,33 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><img src="img/logo.png"/></a>
+                        <h:link class="navbar-brand" outcome="/administradorDepartamental/index"><img src="img/logo.png"/></h:link>
                     </div>
                     <div class="navbar-collapse collapse ">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html">Inicio</a></li> 
+                            <li class="active"><h:link outcome="/administradorDepartamental/index">Inicio</h:link></li> 
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Elecciones <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Centro Votaciones <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nueva Elección</a></li>
-                                    <li><a href="#">Gestionar Elecciones</a></li>
+                                    <li><h:link outcome="/administradorDepartamental/nuevoCentroVotacion">Nuevo Centro de Votación</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaCentrosVotaciones">Lista de Centros de Votación</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Candidatos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Candidato</a></li>
-                                    <li><a href="#">Gestionar Candidatos</a></li>
+                                    <li><h:link outcome="/administradorDepartamental/nuevoCandidatoMunicipal">Nuevo Candidato Municipal</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaCandidatosConsejoMunicipal">Lista Candidatos Municipales</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaCandidatos">Lista Candidatos Presidenciales</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Miembros JRV <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Usuario</a></li>
-                                    <li><a href="#">Gestionar Usuarios</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Departamentos <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Departamento</a></li>
-                                    <li><a href="#">Gestionar Departamentos</a></li>
+                                    <li><a href="about.html">Conformar miembros de JRV</a></li>
+                                    <li><a href="#">Ver miembros de JRV</a></li>
                                 </ul>
                             </li> 
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Municipios <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Municipio</a></li>
-                                    <li><a href="#">Gestionar Municipios</a></li>
-                                </ul>
-                            </li>  
                             <li class="dropdown">
                                 <a href="#" class="fa fa-user" data-toggle="dropdown"> <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -82,39 +68,57 @@
         </header>
         <!-- end header -->
 
-        <!-- Contenido -->
+
         <section id="content-3-10" class="content-block data-section nopad content-3-10">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 content">
                         <div class="editContent">
-                            <h3>Lista de Centros de Votación</h3>
+                            <h3>Añadir Miembros a JRV</h3>
                         </div>
                         <h:form prependId="false">
-                            <h:dataTable id="tabla" styleClass="table table-bordered" value="#{centrosVotacionesBean.listaCentrosVotacion}" var="item">
+                            <h:dataTable id="tabla" styleClass="table table-bordered" value="#{jrvsBean.listaJRV}" var="item">
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="ID"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.idCentroVotacion}"/>
+                                    <h:outputText rendered="#{item.idUsuario.apellidoUsuario == null}" value="#{item.idJrv}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Centro de Votación"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.centroVotacion}"/>
+                                    <h:outputText rendered="#{item.idUsuario.apellidoUsuario == null}" value="#{item.idCentroVotacion.centroVotacion}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Dirección"/>
+                                        <h:outputText value="Elección"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.direccion}"/>
+                                    <h:outputText rendered="#{item.idUsuario.apellidoUsuario == null}" value="#{item.idEleccion.descripcionEleccion}"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Municipio"/>
+                                        <h:outputText value="Presidente JRV"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.idMunicipio.municipio}"/>
+                                    <h:outputText rendered="#{item.idUsuario.apellidoUsuario == null}" value="No Asignado"/>
+                                    <h:outputText rendered="#{item.idUsuario.apellidoUsuario == null}" value="#{item.idUsuario.nombreUsuario} "/>
+                                    <h:outputText rendered="#{item.idUsuario.apellidoUsuario == null}" value="#{item.idUsuario.apellidoUsuario} "/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Estado"/>
+                                    </f:facet>
+                                    <h:outputText rendered="#{item.estadoFinalizado == 1 and item.idUsuario.apellidoUsuario == null}" value="Activo"/>
+                                    <h:outputText rendered="#{item.estadoFinalizado == 0 and item.idUsuario.apellidoUsuario == null}" value="Inactivo"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operaciones"/>
+                                    </f:facet>
+                                    <h:commandLink rendered="#{item.idUsuario.apellidoUsuario == null}" action="#{miembrosJrvBean.obtenerJRV()}" styleClass="btn btn-primary">
+                                        Seleccionar
+                                        <f:param name="codigo" value="#{item.idJrv}" />
+                                    </h:commandLink>
                                 </h:column>
                             </h:dataTable>
                         </h:form>
@@ -122,8 +126,7 @@
                 </div>
             </div>
         </section>
-        
-        
+
         <!--Footer-->
 
         <div id="sub-footer">

@@ -6,10 +6,12 @@
 package sv.edu.udb.www.model;
 
 import java.util.List;
+import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import sv.edu.udb.www.entities.MiembrojrvEntity;
 import sv.edu.udb.www.entities.TipousuarioEntity;
 import sv.edu.udb.www.entities.UsuariosEntity;
 
@@ -132,6 +134,47 @@ public class UsuariosModel {
             return 1;
         } catch (Exception e) {
             return 0;
+        }
+    }
+    
+    
+    public UsuariosEntity insertarPresidenteJRV(MiembrojrvEntity miembro) {
+        UsuariosEntity usuario = new UsuariosEntity();
+        try {
+            Query query = em.createNamedQuery("UsuariosEntity.findAll");
+            int contador = query.getResultList().size();
+            if (contador == 0) {
+                usuario.setIdUsuario("P0001");
+            } else if (contador > 0 && contador < 9) {
+                contador = contador + 1;
+                usuario.setIdUsuario("P000" + contador);
+            }else if (contador>=9&&contador<99) {
+                contador = contador + 1;
+                usuario.setIdUsuario("P00"+ contador);
+            }else if (contador>=99&&contador<999) {
+                contador = contador + 1;
+                usuario.setIdUsuario("P0"+ contador);
+            }
+            else if (contador>=999) {
+                contador = contador + 1;
+                usuario.setIdUsuario("P"+ contador);
+            }
+            usuario.setNombreUsuario(miembro.getDuiCiudadano().getNombresCiudadano());
+            usuario.setApellidoUsuario(miembro.getDuiCiudadano().getApellidosCiudadano());
+            String correo = usuario.getNombreUsuario() + usuario.getApellidoUsuario()+ contador + "@eleccionsv.com";
+            usuario.setCorreo(correo);
+            String cadenaAleatoria = UUID.randomUUID().toString();
+            usuario.setContrasena(cadenaAleatoria.substring(0, 8));
+            usuario.setIdDepartamento(miembro.getDuiCiudadano().getIdCentroVotacion().getIdMunicipio().getIdDepartamento());
+            TipousuarioEntity tipoUsuario = new TipousuarioEntity();
+            tipoUsuario.setIdTipoUsuario((Integer)3);
+            tipoUsuario.setTipoUsuario("Presidente JRV");
+            usuario.setIdTipoUsuario(tipoUsuario);
+            em.persist(usuario);
+            em.flush();
+            return usuario;
+        } catch (Exception e) {
+            return null;
         }
     }
 }

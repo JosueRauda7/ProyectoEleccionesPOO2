@@ -5,32 +5,37 @@
  */
 package sv.edu.udb.www.model;
 
-import java.util.List;
+import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import sv.edu.udb.www.entities.JrvEntity;
 import sv.edu.udb.www.entities.MiembrojrvEntity;
+import sv.edu.udb.www.entities.TipomiembroEntity;
+import sv.edu.udb.www.entities.TipousuarioEntity;
+import sv.edu.udb.www.entities.UsuariosEntity;
 
 /**
  *
  * @author admi
  */
 @Stateless
-public class JrvModel {
+public class MiembrosJrvModel {
 
     @PersistenceContext(unitName = "ProyectoPooPeriodo2PU")
     private EntityManager em;
+    
+    public TipomiembroEntity obtenerTipoMiembro(int id){
+        return em.find(TipomiembroEntity.class, id);
+    }
+    
+    public MiembrojrvEntity obtenerMiembroJRV(int id){
+        return em.find(MiembrojrvEntity.class, id);
+    }
 
-    public List<JrvEntity> listarJRVs(){
-        Query query = em.createNamedQuery("JrvEntity.findAll");
-        return query.getResultList();
-    }
-    
-    public int insertarJRV(JrvEntity jrv){
+    public int insertarMiembroJRV(MiembrojrvEntity miembro){
         try{
-            em.persist(jrv);
+            em.persist(miembro);
             em.flush();
             return 1;
         }catch(Exception e){
@@ -38,17 +43,7 @@ public class JrvModel {
         }
     }
     
-    public JrvEntity obtenerJRV(int id){
-        return em.find(JrvEntity.class, id);
-    }
     
-    public int asignarPresidenteJRV(JrvEntity presidente){
-        try{
-            em.merge(presidente);
-            em.flush();
-            return 1;
-        }catch(Exception e){
-            return 0;
-        }
-    }
+    
+    
 }

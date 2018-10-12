@@ -101,13 +101,6 @@
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Estado"/>
-                                    </f:facet>
-                                    <h:outputText rendered="#{item.estadoFinalizado == 1}" value="Activo"/>
-                                    <h:outputText rendered="#{item.estadoFinalizado == 0}" value="Inactivo"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
                                         <h:outputText value="Centro de Votación"/>
                                     </f:facet>
                                     <h:outputText value="#{item.idCentroVotacion.centroVotacion}"/>
@@ -125,6 +118,13 @@
                                     <h:outputText rendered="#{item.idUsuario.apellidoUsuario == null}" value="No Asignado"/>
                                     <h:outputText value="#{item.idUsuario.nombreUsuario} "/>
                                     <h:outputText value="#{item.idUsuario.apellidoUsuario} "/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Estado"/>
+                                    </f:facet>
+                                    <h:outputText rendered="#{item.estadoFinalizado == 1}" value="Activo"/>
+                                    <h:outputText rendered="#{item.estadoFinalizado == 0}" value="Inactivo"/>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">

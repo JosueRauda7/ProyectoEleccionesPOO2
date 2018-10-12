@@ -1,15 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <!-- css -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet"/> 
         <link href="css/flexslider.css" rel="stylesheet" /> 
         <link href="css/style.css" rel="stylesheet" />
-        <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/alertify.js"></script>
@@ -81,51 +79,47 @@
             </div>
         </header>
         <!-- end header -->
-
-        <!-- Contenido -->
+        
+        
+        <!--Contenido-->
         <section id="content-3-10" class="content-block data-section nopad content-3-10">
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 content">
                         <div class="editContent">
-                            <h3>Lista de Centros de Votación</h3>
+                            <h3>Panel de Administración > Candidatos</h3>
                         </div>
-                        <h:form prependId="false">
-                            <h:dataTable id="tabla" styleClass="table table-bordered" value="#{centrosVotacionesBean.listaCentrosVotacion}" var="item">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="ID"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idCentroVotacion}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Centro de Votación"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.centroVotacion}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Dirección"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.direccion}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Municipio"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idMunicipio.municipio}"/>
-                                </h:column>
-                            </h:dataTable>
-                        </h:form>
+                        <!--Accesos-->
+                        <div class="row">
+                            <div class="col-sm-4 info-blocks">
+                                <i class="icon-info-blocks fa fa-users"></i>
+                                <div class="info-blocks-in">
+                                    <h3>Candidatos Presidenciales</h3>
+                                    <p>Gestiona y administra los candidatos presidenciales.</p>
+                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 info-blocks">
+                                <i class="icon-info-blocks fa fa-info-circle"></i>
+                                <div class="info-blocks-in">
+                                    <h3>Candidatos Municipales</h3>
+                                    <p>Visualiza los candidatos municipales.</p>
+                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Fin Accesos-->
                     </div>
-                </div>
-            </div>
+                </div><!-- /.row-->
+            </div><!-- /.container -->
         </section>
+
+        <!--Fin Contenido-->
         
         
         <!--Footer-->
-
+        
         <div id="sub-footer">
             <div class="container">
                 <div class="row">
@@ -134,11 +128,7 @@
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function () {
-                $('#tabla').dataTable();
-            });
-        </script>
+        
         <h:outputScript rendered="#{not empty flash.exito}">
             alertify.success('#{flash.exito}');
         </h:outputScript>
