@@ -49,8 +49,8 @@
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Miembros JRV <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Conformar miembros de JRV</a></li>
-                                    <li><a href="#">Ver miembros de JRV</a></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaJRV">Conformar miembros de JRV</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/visualizarJRV">Ver miembros de JRV</h:link></li>
                                 </ul>
                             </li> 
                             <li class="dropdown">
@@ -84,7 +84,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Candidatos Presidenciales</h3>
                                     <p>Visualiza los candidatos presidenciales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorDepartamental/listaCandidatos" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -92,7 +92,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Candidatos Municipales</h3>
                                     <p>Gestiona y administra los candidatos municipales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorDepartamental/listaCandidatosConsejoMunicipal" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                         </div>

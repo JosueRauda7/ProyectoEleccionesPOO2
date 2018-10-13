@@ -49,8 +49,8 @@
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Miembros JRV <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Conformar miembros de JRV</a></li>
-                                    <li><a href="#">Ver miembros de JRV</a></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaJRV">Conformar miembros de JRV</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/visualizarJRV">Ver miembros de JRV</h:link></li>
                                 </ul>
                             </li> 
                             <li class="dropdown">
@@ -84,7 +84,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Centros de Votación</h3>
                                     <p>Gestiona o crea centros de votación en los que realizarán los procesos electorales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="listaCentrosVotaciones.xhtml" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -92,7 +92,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Candidatos</h3>
                                     <p>Registra y administra candidatos en elecciones presidenciales. Visualiza candidatos presidenciales</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="panelAdministracionCandidatos.xhtml" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -100,7 +100,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Miembros JRV</h3>
                                     <p>Administra miembros de las JRV. Agrega miembros a las JRV según Centro de Votación</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="visualizarJRV.xhtml" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                         </div>

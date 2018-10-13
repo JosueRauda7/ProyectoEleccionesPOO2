@@ -152,6 +152,11 @@ public class MiembrosJrvBean {
     }
 
     public String guardarMiembros() {
+        //verificacion de JRV
+        if (jrv.getIdJrv() == null) {
+            JsfUtils.addErrorMessage("duiPresidente", "No ha seleccionado una JRV.");
+            return null;
+        }
         //datos adicionales
         presidente.setIdTipoMiembro(miembrosJrvModel.obtenerTipoMiembro(1));
         secretario.setIdTipoMiembro(miembrosJrvModel.obtenerTipoMiembro(2));
