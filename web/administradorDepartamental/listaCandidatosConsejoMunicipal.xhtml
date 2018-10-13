@@ -79,7 +79,7 @@
                             <h3>Lista de Candidatos de Consejo Municipal</h3>
                         </div>
                         <h:link outcome="/administradorDepartamental/nuevoCandidatoMunicipal" style="margin-bottom: 10px;" value="Nuevo Candidato Municipal" styleClass="btn btn-info"/>
-                        <h:form>
+                        <h:form prependId="false">
                             <h:dataTable id="tabla" styleClass="table table-bordered" value="#{candidatosBean.listaCandidatosConsejoMunicipal}" var="item">
                                 <h:column>
                                     <f:facet name="header">

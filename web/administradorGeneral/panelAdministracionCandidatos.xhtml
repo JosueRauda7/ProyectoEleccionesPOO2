@@ -30,40 +30,41 @@
                     </div>
                     <div class="navbar-collapse collapse ">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html">Inicio</a></li> 
+                            <li class="active"><h:link outcome="/administradorGeneral/index">Inicio</h:link></li> 
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Elecciones <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nueva Elección</a></li>
-                                    <li><a href="#">Gestionar Elecciones</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevaEleccion">Nueva Elección</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaJRV">Ver JRVs</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaElecciones">Gestionar Elecciones</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Candidatos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Candidato</a></li>
-                                    <li><a href="#">Gestionar Candidatos</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoCandidatoPresidencial">Nuevo Candidato Presidencial</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCandidatos">Lista Candidatos Presidenciales</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCandidatosConsejoMunicipal">Lista Candidatos Municipales</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Partidos Políticos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Usuario</a></li>
-                                    <li><a href="#">Gestionar Usuarios</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoPartido">Nuevo Partido Político</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaPartidos">Gestionar Partidos Políticos</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Departamentos <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Departamento</a></li>
-                                    <li><a href="#">Gestionar Departamentos</a></li>
-                                </ul>
-                            </li> 
+                                <h:link outcome="/administradorGeneral/panelAdministracionUsuarios">Usuarios</h:link>
+                            </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Municipios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Región <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Municipio</a></li>
-                                    <li><a href="#">Gestionar Municipios</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoDepartamento">Nuevo Departamento</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaDepartamentos">Gestionar Departamentos</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoMunicipio">Nuevo Municipio</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaMunicipios">Gestionar Municipios</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCentrosVotaciones">Listado de Centros de Votación</h:link></li>
                                 </ul>
                             </li>  
                             <li class="dropdown">
@@ -97,7 +98,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Candidatos Presidenciales</h3>
                                     <p>Gestiona y administra los candidatos presidenciales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/listaCandidatos" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -105,7 +106,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Candidatos Municipales</h3>
                                     <p>Visualiza los candidatos municipales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/listaCandidatosConsejoMunicipal" styleClass="btn btn-primary">Visualizar</h:link>
                                 </div>
                             </div>
                         </div>
