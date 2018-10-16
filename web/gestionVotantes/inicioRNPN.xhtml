@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templateRNPN.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="titulo">
+        Inicio
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="col-sm-12 content">
+            <div class="edit-content">
+                <h3 class="text-center" style="margin-top: -5%;"> Panel de administración </h3>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 info-blocks">
+                    <i class="icon-info-blocks fa fa-check"></i>
+                    <div class="info-blocks-in">
+                        <h3>Ciudadanos</h3>
+                        <p>Gestiona el registro de los ciudadanos</p>
+                        <h:link outcome="/index" styleClass="btn btn-primary">Administrar</h:link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

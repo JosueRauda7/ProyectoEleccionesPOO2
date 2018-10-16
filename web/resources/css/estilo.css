@@ -3,7 +3,7 @@
 
 #dui{
     margin-top: 3%;
-    width: 51%;
+    width: 50.1%;
 }
 
 #nombre, #apellido{
@@ -29,4 +29,8 @@
 
 #Aceptar{
     margin-left: 33%;
+}
+
+.adminCiudadanos{
+    margin-top: 8%;
 }

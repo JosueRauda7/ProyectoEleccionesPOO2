@@ -11,59 +11,78 @@
 
     <ui:define name="content">
         <h1 class="text-center" style="margin-top: -5%;">Lista de ciudadanos</h1>
-        <f:view>
 
-
-            <h:form><br></br>
-                <h:dataTable value="#{ciudadanosBean.listaCiudadanos}" var="item" class="table table-bordered" id="tabla">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Dui"/>
-                        </f:facet>
-                        <h:outputText value="#{item.duiCiudadano}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="NombresCiudadano"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nombresCiudadano}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ApellidosCiudadano"/>
-                        </f:facet>
-                        <h:outputText value="#{item.apellidosCiudadano}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="FechaNacimiento"/>
-                        </f:facet>
-                        <h:outputText value="#{item.fechaNacimiento}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Direccion"/>
-                        </f:facet>
-                        <h:outputText value="#{item.direccion}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="UrlFoto"/>
-                        </f:facet>
-                        <h:outputText value="#{item.urlFoto}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdCentroVotacion"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idCentroVotacion.centroVotacion}"/>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-        </f:view>
-
+        <h:form><br></br>
+            <h:link outcome="/ingresarCiudadano" value="Ingresar ciudadano" class="btn btn-default"/><br/>
+            <h:dataTable value="#{ciudadanosBean.listaCiudadanos}" var="item" class="table table-bordered" id="tabla">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Dui"/>
+                    </f:facet>
+                    <h:outputText value="#{item.duiCiudadano}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="NombresCiudadano"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombresCiudadano}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ApellidosCiudadano"/>
+                    </f:facet>
+                    <h:outputText value="#{item.apellidosCiudadano}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="FechaNacimiento"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Direccion"/>
+                    </f:facet>
+                    <h:outputText value="#{item.direccion}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="UrlFoto"/>
+                    </f:facet>
+                    <h:outputText value="#{item.urlFoto}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="IdCentroVotacion"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idCentroVotacion.centroVotacion}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Operaciones"/>
+                    </f:facet>
+                    <h:commandLink class="btn btn-info" action="#{ciudadanosBean.obtenerCiudadano()}">
+                        <i class="glyphicon glyphicon-edit"></i> 
+                        <f:param name="codigo" value="#{item.duiCiudadano}" />
+                    </h:commandLink>    
+                    <h:commandLink class="btn btn-danger" style="margin-left: 5px;" onclick="return confirmar();" action="#{ciudadanosBean.eliminarCiudadano()}">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        <f:param name="codigo" value="#{item.duiCiudadano}" />
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        <script>
+            $(document).ready(function () {
+                $('#tabla').dataTable();
+            });
+            
+            function confirmar() {
+                return confirm("¿Realmente deseas eliminar el registro de este ciudadano?");
+            }
+        </script>
     </ui:define>
 
 </ui:composition>
