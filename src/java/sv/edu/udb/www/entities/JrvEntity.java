@@ -60,6 +60,8 @@ public class JrvEntity implements Serializable {
     @ManyToOne
     private UsuariosEntity idUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJrv")
+    private List<CiudadanojrvEntity> ciudadanojrvEntityList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJrv")
     private List<MiembrojrvEntity> miembrojrvEntityList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJrv")
     private List<DetallevotoEntity> detallevotoEntityList;
@@ -130,6 +132,14 @@ public class JrvEntity implements Serializable {
 
     public void setIdUsuario(UsuariosEntity idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public List<CiudadanojrvEntity> getCiudadanojrvEntityList() {
+        return ciudadanojrvEntityList;
+    }
+
+    public void setCiudadanojrvEntityList(List<CiudadanojrvEntity> ciudadanojrvEntityList) {
+        this.ciudadanojrvEntityList = ciudadanojrvEntityList;
     }
 
     public List<MiembrojrvEntity> getMiembrojrvEntityList() {

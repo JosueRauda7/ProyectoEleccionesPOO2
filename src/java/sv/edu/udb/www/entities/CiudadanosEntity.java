@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sv.edu.udb.www.entities;
 
 import java.io.Serializable;
@@ -19,6 +24,10 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author admi
+ */
 @Entity
 @Table(name = "ciudadanos")
 @NamedQueries({
@@ -63,6 +72,8 @@ public class CiudadanosEntity implements Serializable {
     @JoinColumn(name = "IdCentroVotacion", referencedColumnName = "IdCentroVotacion")
     @ManyToOne(optional = false)
     private CentrovotacionEntity idCentroVotacion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "duiCiudadano")
+    private List<CiudadanojrvEntity> ciudadanojrvEntityList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "duiCiudadano")
     private List<MiembrojrvEntity> miembrojrvEntityList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "duiCiudadano")
@@ -146,6 +157,14 @@ public class CiudadanosEntity implements Serializable {
 
     public void setIdCentroVotacion(CentrovotacionEntity idCentroVotacion) {
         this.idCentroVotacion = idCentroVotacion;
+    }
+
+    public List<CiudadanojrvEntity> getCiudadanojrvEntityList() {
+        return ciudadanojrvEntityList;
+    }
+
+    public void setCiudadanojrvEntityList(List<CiudadanojrvEntity> ciudadanojrvEntityList) {
+        this.ciudadanojrvEntityList = ciudadanojrvEntityList;
     }
 
     public List<MiembrojrvEntity> getMiembrojrvEntityList() {

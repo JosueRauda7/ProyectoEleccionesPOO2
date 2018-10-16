@@ -18,9 +18,6 @@ public class CiudadanosModel {
         return query.getResultList();
     }
     
-    public CiudadanosEntity obtenerCiudadano(String dui){
-        return em.find(CiudadanosEntity.class, dui);
-    }
 
     public int ingresarCiudadanos(CiudadanosEntity ciudadanos) {
         try {
