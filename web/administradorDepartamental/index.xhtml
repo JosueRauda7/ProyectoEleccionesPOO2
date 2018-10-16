@@ -26,46 +26,33 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><img src="img/logo.png"/></a>
+                        <h:link class="navbar-brand" outcome="/administradorDepartamental/index"><img src="img/logo.png"/></h:link>
                     </div>
                     <div class="navbar-collapse collapse ">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html">Inicio</a></li> 
+                            <li class="active"><h:link outcome="/administradorDepartamental/index">Inicio</h:link></li> 
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Elecciones <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Centro Votaciones <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nueva Elección</a></li>
-                                    <li><a href="#">Gestionar Elecciones</a></li>
+                                    <li><h:link outcome="/administradorDepartamental/nuevoCentroVotacion">Nuevo Centro de Votación</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaCentrosVotaciones">Lista de Centros de Votación</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Candidatos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Candidato</a></li>
-                                    <li><a href="#">Gestionar Candidatos</a></li>
+                                    <li><h:link outcome="/administradorDepartamental/nuevoCandidatoMunicipal">Nuevo Candidato Municipal</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaCandidatosConsejoMunicipal">Lista Candidatos Municipales</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaCandidatos">Lista Candidatos Presidenciales</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Miembros JRV <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Usuario</a></li>
-                                    <li><a href="#">Gestionar Usuarios</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Departamentos <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Departamento</a></li>
-                                    <li><a href="#">Gestionar Departamentos</a></li>
+                                    <li><h:link outcome="/administradorDepartamental/listaJRV">Conformar miembros de JRV</h:link></li>
+                                    <li><h:link outcome="/administradorDepartamental/visualizarJRV">Ver miembros de JRV</h:link></li>
                                 </ul>
                             </li> 
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Municipios <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Municipio</a></li>
-                                    <li><a href="#">Gestionar Municipios</a></li>
-                                </ul>
-                            </li>  
                             <li class="dropdown">
                                 <a href="#" class="fa fa-user" data-toggle="dropdown"> <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -97,33 +84,23 @@
                                 <div class="info-blocks-in">
                                     <h3>Centros de Votación</h3>
                                     <p>Gestiona o crea centros de votación en los que realizarán los procesos electorales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="listaCentrosVotaciones.xhtml" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
                                 <i class="icon-info-blocks fa fa-users"></i>
                                 <div class="info-blocks-in">
                                     <h3>Candidatos</h3>
-                                    <p>Registra y administra candidatos en elecciones presidenciales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <p>Registra y administra candidatos en elecciones presidenciales. Visualiza candidatos presidenciales</p>
+                                    <h:link outcome="panelAdministracionCandidatos.xhtml" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
-                            <div class="col-sm-4 info-blocks">
-                                <i class="icon-info-blocks fa fa-archive"></i>
-                                <div class="info-blocks-in">
-                                    <h3>Juntas Receptivas de Votos (JRV)</h3>
-                                    <p>Gestiona o crea JRV para cuidar urnas en una elección presidencial o de consejos municipales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-sm-4 info-blocks">
                                 <i class="icon-info-blocks fa fa-users"></i>
                                 <div class="info-blocks-in">
                                     <h3>Miembros JRV</h3>
-                                    <p>Registra y administra miembros de las JRV.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <p>Administra miembros de las JRV. Agrega miembros a las JRV según Centro de Votación</p>
+                                    <h:link outcome="visualizarJRV.xhtml" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                         </div>

@@ -17,6 +17,10 @@ public class CiudadanosModel {
         Query query = em.createNamedQuery("CiudadanosEntity.findAll");
         return query.getResultList();
     }
+    
+    public CiudadanosEntity obtenerCiudadano(String dui){
+        return em.find(CiudadanosEntity.class, dui);
+    }
 
     public int ingresarCiudadanos(CiudadanosEntity ciudadanos) {
         try {

@@ -30,40 +30,41 @@
                     </div>
                     <div class="navbar-collapse collapse ">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html">Inicio</a></li> 
+                            <li class="active"><h:link outcome="/administradorGeneral/index">Inicio</h:link></li> 
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Elecciones <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nueva Elección</a></li>
-                                    <li><a href="#">Gestionar Elecciones</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevaEleccion">Nueva Elección</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaJRV">Ver JRVs</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaElecciones">Gestionar Elecciones</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Candidatos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Candidato</a></li>
-                                    <li><a href="#">Gestionar Candidatos</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoCandidatoPresidencial">Nuevo Candidato Presidencial</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCandidatos">Lista Candidatos Presidenciales</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCandidatosConsejoMunicipal">Lista Candidatos Municipales</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Partidos Políticos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Usuario</a></li>
-                                    <li><a href="#">Gestionar Usuarios</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoPartido">Nuevo Partido Político</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaPartidos">Gestionar Partidos Políticos</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Departamentos <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Departamento</a></li>
-                                    <li><a href="#">Gestionar Departamentos</a></li>
-                                </ul>
-                            </li> 
+                                <h:link outcome="/administradorGeneral/panelAdministracionUsuarios">Usuarios</h:link>
+                            </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Municipios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Región <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Municipio</a></li>
-                                    <li><a href="#">Gestionar Municipios</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoDepartamento">Nuevo Departamento</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaDepartamentos">Gestionar Departamentos</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoMunicipio">Nuevo Municipio</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaMunicipios">Gestionar Municipios</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCentrosVotaciones">Listado de Centros de Votación</h:link></li>
                                 </ul>
                             </li>  
                             <li class="dropdown">
@@ -97,15 +98,15 @@
                                 <div class="info-blocks-in">
                                     <h3>Proceso Electorales</h3>
                                     <p>Gestiona o crea una elección para el país, sea este una elección presidencial o de consejos municipales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/listaElecciones" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
                                 <i class="icon-info-blocks fa fa-users"></i>
                                 <div class="info-blocks-in">
                                     <h3>Candidatos</h3>
-                                    <p>Registra y administra candidatos en elecciones presidenciales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <p>Registra y administra candidatos en elecciones presidenciales. Visualiza candidatos municipales</p>
+                                    <h:link outcome="/administradorGeneral/panelAdministracionCandidatos" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -113,7 +114,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Partidos Políticos</h3>
                                     <p>Gestiona o crea partidos políticos a postular en las elecciones del país.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/listaPartidos" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +123,8 @@
                                 <i class="icon-info-blocks fa fa-dot-circle-o"></i>
                                 <div class="info-blocks-in">
                                     <h3>Centros de Votación</h3>
-                                    <p>Gestiona o crea centros de votación en los que realizarán los procesos electorales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <p>Visualiza los centros de votación en los que realizarán los procesos electorales.</p>
+                                    <h:link outcome="/administradorGeneral/listaCentrosVotaciones" styleClass="btn btn-primary">Visualizar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -131,7 +132,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Juntas Receptivas de Votos (JRV)</h3>
                                     <p>Gestiona o crea JRV para cuidar urnas en una elección presidencial o de consejos municipales.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/listaJRV" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -139,7 +140,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Usuarios del Sistema</h3>
                                     <p>Registra y administra los usuarios del sistema de la organización de las elecciones.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/panelAdministracionUsuarios" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             
@@ -150,7 +151,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Departamentos</h3>
                                     <p>Registra y gestiona departamentos en el que se realizan la elecciones.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/listaDepartamentos" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                             <div class="col-sm-4 info-blocks">
@@ -158,7 +159,7 @@
                                 <div class="info-blocks-in">
                                     <h3>Municipios</h3>
                                     <p>Registra y gestiona municipios en el que se realizan la elecciones.</p>
-                                    <h:link outcome="index.xhtml" styleClass="btn btn-primary">Administrar</h:link>
+                                    <h:link outcome="/administradorGeneral/listaMunicipios" styleClass="btn btn-primary">Administrar</h:link>
                                 </div>
                             </div>
                         </div>

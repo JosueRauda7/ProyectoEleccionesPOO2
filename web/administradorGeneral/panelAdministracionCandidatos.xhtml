@@ -1,15 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <!-- css -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet"/> 
         <link href="css/flexslider.css" rel="stylesheet" /> 
         <link href="css/style.css" rel="stylesheet" />
-        <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/alertify.js"></script>
@@ -32,40 +30,41 @@
                     </div>
                     <div class="navbar-collapse collapse ">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html">Inicio</a></li> 
+                            <li class="active"><h:link outcome="/administradorGeneral/index">Inicio</h:link></li> 
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Elecciones <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nueva Elección</a></li>
-                                    <li><a href="#">Gestionar Elecciones</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevaEleccion">Nueva Elección</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaJRV">Ver JRVs</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaElecciones">Gestionar Elecciones</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown">Candidatos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Candidato</a></li>
-                                    <li><a href="#">Gestionar Candidatos</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoCandidatoPresidencial">Nuevo Candidato Presidencial</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCandidatos">Lista Candidatos Presidenciales</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCandidatosConsejoMunicipal">Lista Candidatos Municipales</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Partidos Políticos <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Usuario</a></li>
-                                    <li><a href="#">Gestionar Usuarios</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoPartido">Nuevo Partido Político</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaPartidos">Gestionar Partidos Políticos</h:link></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Departamentos <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Departamento</a></li>
-                                    <li><a href="#">Gestionar Departamentos</a></li>
-                                </ul>
-                            </li> 
+                                <h:link outcome="/administradorGeneral/panelAdministracionUsuarios">Usuarios</h:link>
+                            </li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown">Municipios <b class="caret"></b></a>
+                                <a href="#" data-toggle="dropdown">Región <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="about.html">Nuevo Municipio</a></li>
-                                    <li><a href="#">Gestionar Municipios</a></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoDepartamento">Nuevo Departamento</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaDepartamentos">Gestionar Departamentos</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/nuevoMunicipio">Nuevo Municipio</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaMunicipios">Gestionar Municipios</h:link></li>
+                                    <li><h:link outcome="/administradorGeneral/listaCentrosVotaciones">Listado de Centros de Votación</h:link></li>
                                 </ul>
                             </li>  
                             <li class="dropdown">
@@ -81,46 +80,47 @@
             </div>
         </header>
         <!-- end header -->
-
+        
+        
+        <!--Contenido-->
         <section id="content-3-10" class="content-block data-section nopad content-3-10">
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 content">
                         <div class="editContent">
-                            <h3>Nuevo Centro de Votación</h3>
-                            <div class="col-lg-4"></div>
-                            <h:form class="col-lg-4">
-                                <h:panelGroup layout="block" class="alert-danger" rendered="#{not empty facesContext.messageList}">
-                                    <h:messages />
-                                </h:panelGroup>
-                                <div class="form-group">
-                                    <h:outputLabel value="Centro de Votación:" for="centroVotacion" />
-                                    <h:inputText id="centroVotacion" styleClass="form-control" value="#{centrosVotacionesBean.centroVotacion.centroVotacion}" title="CentroVotacion" required="true" requiredMessage="The CentroVotacion field is required."/>
-                                </div>
-                                <div class="form-group">
-                                    <h:outputLabel value="Dirección:" for="direccion" />
-                                    <h:inputTextarea id="direccion" styleClass="form-control" style="max-width: 100%;" value="#{centrosVotacionesBean.centroVotacion.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                                </div>
-                                <div class="form-group">
-                                    <h:outputLabel value="Municipio:" for="idMunicipio" />
-                                    <h:selectOneMenu id="idMunicipio" styleClass="form-control" value="#{centrosVotacionesBean.centroVotacion.idMunicipio}" title="IdMunicipio" required="true" requiredMessage="The IdMunicipio field is required.">
-                                        <!-- TODO: update below reference to list of available items-->
-                                        <f:selectItems value="#{centrosVotacionesBean.listaMunicipios}" var="municipio"
-                                                       itemValue="#{municipio}" itemLabel="#{municipio.municipio}"/>
-                                    </h:selectOneMenu>
-                                </div>
-                                <div class="col-lg-1"></div>
-                                <h:commandButton action="#{centrosVotacionesBean.guardarCentroVotacion()}" styleClass="btn btn-success col-lg-4" value="Aceptar" />
-                                <div class="col-lg-1"></div>
-                                <h:link value="Cancelar" styleClass="btn btn-danger col-lg-4" outcome="/administradorGeneral/listaCentrosVotaciones" />
-                            </h:form>
+                            <h3>Panel de Administración > Candidatos</h3>
                         </div>
+                        <!--Accesos-->
+                        <div class="row">
+                            <div class="col-sm-4 info-blocks">
+                                <i class="icon-info-blocks fa fa-users"></i>
+                                <div class="info-blocks-in">
+                                    <h3>Candidatos Presidenciales</h3>
+                                    <p>Gestiona y administra los candidatos presidenciales.</p>
+                                    <h:link outcome="/administradorGeneral/listaCandidatos" styleClass="btn btn-primary">Administrar</h:link>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 info-blocks">
+                                <i class="icon-info-blocks fa fa-info-circle"></i>
+                                <div class="info-blocks-in">
+                                    <h3>Candidatos Municipales</h3>
+                                    <p>Visualiza los candidatos municipales.</p>
+                                    <h:link outcome="/administradorGeneral/listaCandidatosConsejoMunicipal" styleClass="btn btn-primary">Visualizar</h:link>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Fin Accesos-->
                     </div>
-                </div>
-            </div>
+                </div><!-- /.row-->
+            </div><!-- /.container -->
         </section>
-        <!--Footer-->
 
+        <!--Fin Contenido-->
+        
+        
+        <!--Footer-->
+        
         <div id="sub-footer">
             <div class="container">
                 <div class="row">
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </div>
-
+        
         <h:outputScript rendered="#{not empty flash.exito}">
             alertify.success('#{flash.exito}');
         </h:outputScript>
