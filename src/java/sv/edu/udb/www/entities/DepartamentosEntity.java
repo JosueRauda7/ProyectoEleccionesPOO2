@@ -29,7 +29,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "DepartamentosEntity.findAll", query = "SELECT d FROM DepartamentosEntity d")
     , @NamedQuery(name = "DepartamentosEntity.findByIdDepartamento", query = "SELECT d FROM DepartamentosEntity d WHERE d.idDepartamento = :idDepartamento")
-    , @NamedQuery(name = "DepartamentosEntity.findByDepartamento", query = "SELECT d FROM DepartamentosEntity d WHERE d.departamento = :departamento")})
+    , @NamedQuery(name = "DepartamentosEntity.findByDepartamento", query = "SELECT d FROM DepartamentosEntity d WHERE d.departamento = :departamento")
+    , @NamedQuery(name = "DepartamentosEntity.nombres", query = "SELECT d.departamento FROM DepartamentosEntity d")})
 public class DepartamentosEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

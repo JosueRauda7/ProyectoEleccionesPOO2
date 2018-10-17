@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import sv.edu.udb.www.entities.CiudadanosEntity;
+import sv.edu.udb.www.entities.DepartamentosEntity;
 
 @Stateless
 public class CiudadanosModel {
@@ -16,8 +17,7 @@ public class CiudadanosModel {
     public List<CiudadanosEntity> listarCiudadanos() {
         Query query = em.createNamedQuery("CiudadanosEntity.findAll");
         return query.getResultList();
-    }
-    
+    }    
 
     public int ingresarCiudadanos(CiudadanosEntity ciudadanos) {
         try {
@@ -57,4 +57,9 @@ public class CiudadanosModel {
             return 0;
         }
     }
+    
+    /*public List<DepartamentosEntity> listaDepartamentos(){
+        Query query = em.createNamedQuery("DepartamentosEntity.findByDepartamento");
+        return query.getResultList();
+    }*/
 }

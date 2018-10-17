@@ -74,5 +74,9 @@ public class CiudadanosBean {
         }
         return null;
     }
+    
+    /*public void listaDepartamentos(){
+        ciudadanosModel.listaDepartamentos();
+    }*/
 
 }

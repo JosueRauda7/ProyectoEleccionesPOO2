@@ -36,12 +36,25 @@
                 <div class="form-group col-md-6" id="url">
                     <h:outputLabel value="Foto:" for="urlFoto" />
                     <h:inputText id="urlFoto" class="form-control" value="#{ciudadanosBean.ciudadanos.urlFoto}" title="UrlFoto" required="true" requiredMessage="The UrlFoto field is required."/>
-
+                </div>
+                <div class="form-group col-md-4">
+                    <h:outputLabel value="Departamento:" for="departamento" />
+                    <h:selectOneMenu id="departamento" class="form-control" value="#{departamentosBean.departamento.idDepartamento}">
+                        <f:selectItem itemLabel=" --- Seleccione --- "/>
+                        <f:selectItems value="#{municipiosBean.listaDepartamentos}" var="departament" itemValue="#{departament}" itemLabel="#{departament.departamento}" />
+                    </h:selectOneMenu>
+                </div>
+                <div class="form-group col-md-4">
+                    <h:outputLabel value="Municipio:" for="municipio" />
+                    <h:selectOneMenu id="municipio" class="form-control" value="#{municipiosBean.municipio.idMunicipio}">
+                        <f:selectItem itemLabel=" --- Seleccione --- " />
+                        <f:selectItems value="#{municipiosBean.listaMunicipios}" var="municip" itemValue="#{municip}" itemLabel="#{municip.municipio}" />
+                    </h:selectOneMenu>
                 </div>
                 <div class="form-group col-md-6" id="centro">
                     <h:outputLabel value="Elige el centro de votación:" for="idCentroVotacion" />
                     <h:selectOneMenu id="idCentroVotacion" class="form-control" value="#{ciudadanosBean.ciudadanos.idCentroVotacion}" title="IdCentroVotacion" required="true" requiredMessage="The IdCentroVotacion field is required.">
-                        <f:selectItems value="#{ciudadanosBean.ciudadanos.idCentroVotacion.centroVotacion}"/>
+                        <f:selectItem itemLabel=" --- Seleccione ---"/>
                     </h:selectOneMenu>
                 </div>
                 <div id="Aceptar">

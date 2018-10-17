@@ -37,7 +37,8 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "CiudadanosEntity.findByApellidosCiudadano", query = "SELECT c FROM CiudadanosEntity c WHERE c.apellidosCiudadano = :apellidosCiudadano")
     , @NamedQuery(name = "CiudadanosEntity.findByFechaNacimiento", query = "SELECT c FROM CiudadanosEntity c WHERE c.fechaNacimiento = :fechaNacimiento")
     , @NamedQuery(name = "CiudadanosEntity.findByDireccion", query = "SELECT c FROM CiudadanosEntity c WHERE c.direccion = :direccion")
-    , @NamedQuery(name = "CiudadanosEntity.findByUrlFoto", query = "SELECT c FROM CiudadanosEntity c WHERE c.urlFoto = :urlFoto")})
+    , @NamedQuery(name = "CiudadanosEntity.findByUrlFoto", query = "SELECT c FROM CiudadanosEntity c WHERE c.urlFoto = :urlFoto")
+    , @NamedQuery(name = "CiudadanosEntity.menosFecha", query = "SELECT c.duiCiudadano, c.nombresCiudadano, c.apellidosCiudadano, c.direccion, c.urlFoto, c.idCentroVotacion FROM CiudadanosEntity c")})
 public class CiudadanosEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

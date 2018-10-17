@@ -33,6 +33,10 @@ public class DepartamentosBean {
         return departamentosModel.listarDepartamentos();
     }
     
+    public List<DepartamentosEntity> getListaNombreDepartamentos(){
+        return departamentosModel.listarNombreDepartamentos();
+    }
+    
     //metodos
     public String guardarDepartamento(){
         if(departamentosModel.insertarDepartamento(departamento)==0){

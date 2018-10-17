@@ -31,7 +31,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "MunicipiosEntity.findAll", query = "SELECT m FROM MunicipiosEntity m")
     , @NamedQuery(name = "MunicipiosEntity.findByIdMunicipio", query = "SELECT m FROM MunicipiosEntity m WHERE m.idMunicipio = :idMunicipio")
-    , @NamedQuery(name = "MunicipiosEntity.findByMunicipio", query = "SELECT m FROM MunicipiosEntity m WHERE m.municipio = :municipio")})
+    , @NamedQuery(name = "MunicipiosEntity.findByMunicipio", query = "SELECT m FROM MunicipiosEntity m WHERE m.municipio = :municipio")
+    , @NamedQuery(name = "MuncipiosEntity.porDepartamento", query = "SELECT m.idMunicipio, m.municipio FROM MunicipiosEntity m WHERE m.idDepartamento = :idDepartamento")})
 public class MunicipiosEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

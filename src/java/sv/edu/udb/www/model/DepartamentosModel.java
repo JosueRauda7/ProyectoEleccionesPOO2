@@ -17,6 +17,11 @@ public class DepartamentosModel {
         Query query = em.createNamedQuery("DepartamentosEntity.findAll");
         return query.getResultList();
     }
+    
+    public List<DepartamentosEntity> listarNombreDepartamentos(){
+        Query query = em.createNamedQuery("DepartamentosEntity.nombres");
+        return query.getResultList();
+    }
 
     public int insertarDepartamento(DepartamentosEntity departamento){
         try{
