@@ -138,6 +138,15 @@
                                     </f:facet>
                                     <h:outputText value="#{item.idTipoEleccion.tipoEleccion}"/>
                                 </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operaciones"/>
+                                    </f:facet>
+                                    <h:commandLink rendered="#{item.fechaInicio.after(eleccionesBean.fechaActual) and item.jrvEntityList.size()==0}" action="#{eleccionesBean.generarJRVs()}" styleClass="btn btn-primary">
+                                        Crear JRVs
+                                        <f:param name="codigo" value="#{item.idEleccion}" />
+                                    </h:commandLink>
+                                </h:column>
                             </h:dataTable>
                         </h:form>
                         <!--Accesos-->
