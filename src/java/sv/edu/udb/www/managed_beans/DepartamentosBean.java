@@ -4,8 +4,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.ValueChangeEvent;
 import sv.edu.udb.www.entities.DepartamentosEntity;
 import sv.edu.udb.www.model.DepartamentosModel;
 import sv.edu.udb.www.utils.JsfUtils;
@@ -35,10 +33,6 @@ public class DepartamentosBean {
         return departamentosModel.listarDepartamentos();
     }
     
-    public List<DepartamentosEntity> getListaNombreDepartamentos(){
-        return departamentosModel.listarNombreDepartamentos();
-    }
-    
     //metodos
     public String guardarDepartamento(){
         if(departamentosModel.insertarDepartamento(departamento)==0){
@@ -47,10 +41,6 @@ public class DepartamentosBean {
         }
         JsfUtils.addFlashMessage("exito", "Elección agregado exitosamente.");
         return "/administradorGeneral/listaDepartamentos?faces-redirect=true";
-    }
-    
-    public void obtenerIdDepartamento(ValueChangeEvent event){
-        System.out.print("llego");
     }
     
 }

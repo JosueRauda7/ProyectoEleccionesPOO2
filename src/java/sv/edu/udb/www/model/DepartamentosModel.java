@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import sv.edu.udb.www.entities.DepartamentosEntity;
-
 @Stateless
 public class DepartamentosModel {
 
@@ -18,11 +17,6 @@ public class DepartamentosModel {
         return query.getResultList();
     }
     
-    public List<DepartamentosEntity> listarNombreDepartamentos(){
-        Query query = em.createNamedQuery("DepartamentosEntity.nombres");
-        return query.getResultList();
-    }
-
     public int insertarDepartamento(DepartamentosEntity departamento){
         try{
             em.persist(departamento);

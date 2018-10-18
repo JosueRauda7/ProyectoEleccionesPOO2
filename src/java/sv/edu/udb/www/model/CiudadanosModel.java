@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import sv.edu.udb.www.entities.CiudadanosEntity;
 import sv.edu.udb.www.entities.DepartamentosEntity;
+import sv.edu.udb.www.entities.MunicipiosEntity;
 
 @Stateless
 public class CiudadanosModel {
@@ -14,10 +15,22 @@ public class CiudadanosModel {
     @PersistenceContext(unitName = "ProyectoPooPeriodo2PU")
     private EntityManager em;
 
+    // Métodos para listar
+    
     public List<CiudadanosEntity> listarCiudadanos() {
         Query query = em.createNamedQuery("CiudadanosEntity.findAll");
         return query.getResultList();
     }    
+    
+    public List<DepartamentosEntity> listarDepartamentos(){
+        Query query = em.createNamedQuery("DepartamentosEntity.findAll");
+        return query.getResultList();
+    }
+    
+    public List<MunicipiosEntity> listarMunicipios(){
+        Query query = em.createNamedQuery("MunicipiosEntity.findAll");
+        return query.getResultList();
+    }
 
     public int ingresarCiudadanos(CiudadanosEntity ciudadanos) {
         try {
