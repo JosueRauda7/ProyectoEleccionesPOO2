@@ -36,32 +36,34 @@
                     <h:inputText id="direccion" class="form-control" value="#{ciudadanosBean.ciudadanos.direccion}" title="Direccion" a:placeholder="Ingresa la dirección" required="true" requiredMessage="The Direccion field is required."/>
 
                 </div>
-                <div class="form-group col-md-6" id="url">
-                    <h:outputLabel value="Foto:" for="urlFoto" />
-                    <h:inputFile id="urlFoto"  value="#{ciudadanosBean.file}" class="form-control file file-loading" /><br></br>
-                </div>
-                <div class="form-group col-md-4">
-                    <h:outputLabel value="Departamento:" for="departamento" />
-                    <h:selectOneMenu id="departamento" class="form-control" value="#{ciudadanosBean.departamentos}" >
-                        <f:selectItems  value="#{ciudadanosBean.listaDepartamentos}" var="departament" itemValue="#{departament}" itemLabel="#{departament.departamento}" />
-                        <f:ajax event="change" execute="#{ciudadanosBean.obtenerIdDepartamento(departament.idDepartamento)}" render="municipio" />
-                        
-                    </h:selectOneMenu>
-                </div>
+                <div class="row">
+                    <div class="form-group col-md-5 departa">
+                        <h:outputLabel value="Departamento:" for="departamento" />
+                        <h:selectOneMenu id="departamento" class="form-control" value="#{ciudadanosBean.departamentos}" >
+                            <f:selectItems  value="#{ciudadanosBean.listaDepartamentos}" var="departament" itemValue="#{departament}" itemLabel="#{departament.departamento}" />
+                            <f:ajax event="change" execute="" render="municipio" />
 
-                <div class="form-group col-md-4">
-                    <h:outputLabel value="Municipio:" for="municipio" />
-                    <h:selectOneMenu id="municipio" class="form-control" >
-                        <f:selectItem itemLabel=" --- Seleccione --- " />
-                        <f:selectItems  var="municip"  />
-                    </h:selectOneMenu>
-                </div>
-                
-                <div class="form-group col-md-6" id="centro">
-                    <h:outputLabel value="Elige el centro de votación:" for="idCentroVotacion" />
-                    <h:selectOneMenu id="idCentroVotacion" class="form-control" value="" title="IdCentroVotacion" required="true" requiredMessage="The IdCentroVotacion field is required.">
-                        <f:selectItem itemLabel=" --- Seleccione ---"/>
-                    </h:selectOneMenu>
+                        </h:selectOneMenu>
+                    </div>
+
+                    <div class="form-group col-md-5 munici">
+                        <h:outputLabel value="Municipio:" for="municipio" />
+                        <h:selectOneMenu id="municipio" class="form-control" >
+                            <f:selectItem itemLabel=" --- Seleccione --- " />
+                            <f:selectItems  var="municip"  />
+                        </h:selectOneMenu>
+                    </div>
+
+                    <div class="form-group col-md-6 cent" id="centro">
+                        <h:outputLabel value="Elige el centro de votación:" for="idCentroVotacion" />
+                        <h:selectOneMenu id="idCentroVotacion" class="form-control" value="" title="IdCentroVotacion" required="true" requiredMessage="The IdCentroVotacion field is required.">
+                            <f:selectItem itemLabel=" --- Seleccione ---"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="form-group col-md-6" id="url">
+                        <h:outputLabel value="Foto:" for="urlFoto" />
+                        <h:inputFile id="urlFoto"  value="#{ciudadanosBean.file}" class="form-control file file-loading" /><br></br>
+                    </div>
                 </div>
                 <div id="Aceptar">
                     <h:commandButton value="Aceptar" class="btn btn-success col-md-6" action="#{ciudadanosBean.ingresarCiudadano()}" />

@@ -125,10 +125,6 @@ public class CiudadanosBean {
             JsfUtils.addFlashMessage("fracaso", "No se puede eliminar el registro de este ciudadano");
         }
         return null;
-    }
-    
-    public void obtenerIdDepartamento(String idDepartamento){
-        System.out.println("ID: " + idDepartamento);
-    }
+    }   
 
 }
