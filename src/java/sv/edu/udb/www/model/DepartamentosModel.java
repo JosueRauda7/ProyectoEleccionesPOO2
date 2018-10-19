@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import sv.edu.udb.www.entities.DepartamentosEntity;
+
 @Stateless
 public class DepartamentosModel {
 
