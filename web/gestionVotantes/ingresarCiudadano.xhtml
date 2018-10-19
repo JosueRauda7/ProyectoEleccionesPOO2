@@ -43,7 +43,6 @@
                 <div class="form-group col-md-4">
                     <h:outputLabel value="Departamento:" for="departamento" />
                     <h:selectOneMenu id="departamento" class="form-control" value="#{ciudadanosBean.departamentos}" >
-
                         <f:selectItems  value="#{ciudadanosBean.listaDepartamentos}" var="departament" itemValue="#{departament}" itemLabel="#{departament.departamento}" />
                         <f:ajax event="change" execute="#{ciudadanosBean.obtenerIdDepartamento(departament.idDepartamento)}" render="municipio" />
                         
@@ -52,9 +51,9 @@
 
                 <div class="form-group col-md-4">
                     <h:outputLabel value="Municipio:" for="municipio" />
-                    <h:selectOneMenu id="municipio" class="form-control" value="#{departamentosBean.municipio}" >
+                    <h:selectOneMenu id="municipio" class="form-control" >
                         <f:selectItem itemLabel=" --- Seleccione --- " />
-                        <f:selectItems value="#{departamentosBean.listaMunicipios}" var="municip" itemValue="#{municip}" itemLabel="#{municip.municipio}" />
+                        <f:selectItems  var="municip"  />
                     </h:selectOneMenu>
                 </div>
                 
