@@ -1,6 +1,9 @@
 package sv.edu.udb.www.managed_beans;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import static jdk.nashorn.internal.objects.NativeError.getFileName;
+import sv.edu.udb.www.entities.CentrovotacionEntity;
 import sv.edu.udb.www.entities.CiudadanosEntity;
 import sv.edu.udb.www.entities.DepartamentosEntity;
 import sv.edu.udb.www.entities.MunicipiosEntity;
@@ -24,14 +28,25 @@ public class CiudadanosBean {
     @EJB
     private CiudadanosModel ciudadanosModel;
 
+    private int idDepartamento;
+    private int idMunicipio;
+    private int idCentro;
+
     private CiudadanosEntity ciudadanos = new CiudadanosEntity();
     private DepartamentosEntity departamentos = new DepartamentosEntity();
     private MunicipiosEntity municipios = new MunicipiosEntity();
+    private CentrovotacionEntity centro = new CentrovotacionEntity();
     private Part file;
+
+    private List<DepartamentosEntity> listaDepartamentos;
+    private List<MunicipiosEntity> listaMunicipios;
+    private List<MunicipiosEntity> listaNuevaMunicipios;
+    private List<CentrovotacionEntity> listaCentros;
+    private List<CentrovotacionEntity> listaNuevaCentros;
 
     public CiudadanosBean() {
     }
-    
+
     public CiudadanosEntity getCiudadanos() {
         return ciudadanos;
     }
@@ -55,7 +70,15 @@ public class CiudadanosBean {
     public void setMunicipios(MunicipiosEntity municipios) {
         this.municipios = municipios;
     }
-    
+
+    public CentrovotacionEntity getCentro() {
+        return centro;
+    }
+
+    public void setCentro(CentrovotacionEntity centro) {
+        this.centro = centro;
+    }
+
     public Part getFile() {
         return file;
     }
@@ -63,34 +86,127 @@ public class CiudadanosBean {
     public void setFile(Part file) {
         this.file = file;
     }
-        
+
+    public int getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+
+    public int getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    public void setIdMunicipio(int idMunicipio) {
+        this.idMunicipio = idMunicipio;
+    }
+
+    public int getIdCentro() {
+        return idCentro;
+    }
+
+    public void setIdCentro(int idCentro) {
+        this.idCentro = idCentro;
+    }
+
+    public List<MunicipiosEntity> getListaNuevaMunicipios() {
+        return listaNuevaMunicipios;
+    }
+
+    public void setListaNuevaMunicipios(List<MunicipiosEntity> listaNuevaMunicipios) {
+        this.listaNuevaMunicipios = listaNuevaMunicipios;
+    }
+
+    public List<DepartamentosEntity> getListaDepartamentos() {
+        listaDepartamentos = ciudadanosModel.listarDepartamentos();
+        return listaDepartamentos;
+    }
+
+    public void setListaDepartamentos(List<DepartamentosEntity> listaDepartamentos) {
+        this.listaDepartamentos = listaDepartamentos;
+    }
+
+    public List<MunicipiosEntity> getListaMunicipios() {
+        listaMunicipios = ciudadanosModel.listarMunicipios();
+        return listaMunicipios;
+    }
+
+    public void setListaMunicipios(List<MunicipiosEntity> listaMunicipios) {
+        this.listaMunicipios = listaMunicipios;
+    }
+
+    public List<CentrovotacionEntity> getListaNuevaCentros() {
+        return listaNuevaCentros;
+    }
+
+    public void setListaNuevaCentros(List<CentrovotacionEntity> listaNuevaCentros) {
+        this.listaNuevaCentros = listaNuevaCentros;
+    }
+
+    public List<CentrovotacionEntity> getListaCentros() {
+        listaCentros = ciudadanosModel.listarCentros();
+        return listaCentros;
+    }
+
+    public void setListaCentros(List<CentrovotacionEntity> listaCentros) {
+        this.listaCentros = listaCentros;
+    }
+
     // Métodos
-    
     public List<CiudadanosEntity> getListaCiudadanos() {
         return ciudadanosModel.listarCiudadanos();
     }
 
-    public List<DepartamentosEntity> getListaDepartamentos(){
-        return ciudadanosModel.listarDepartamentos();
-    }
-    
-    public List<MunicipiosEntity> getListaMunicipios(){
-        return ciudadanosModel.listarMunicipios();
-    }
-    
-    public String ingresarCiudadano() {        
+    /*public List<DepartamentosEntity> getListaDepartamentos() {
+        listaDepartamentos = ciudadanosModel.listarDepartamentos();
+        return listaDepartamentos;
+    }*/
+
+ /*public List<MunicipiosEntity> getListaMunicipios() {
+        listaMunicipios = ciudadanosModel.listarMunicipios();
+        return listaMunicipios;
+    }*/
+    public String ingresarCiudadano() {
         try {
-            file.write("fotos/" + getFileName(file.getContentType()));
+            this.idDepartamento = 0;
+            this.idMunicipio = 0;
             
-            String nombreArchivo = (String) getFileName(file.getContentType());
+            file.write("fotos/" + getFileName(file));
+
+            String nombreArchivo = (String) getFileName(file);
+            
             ciudadanos.setUrlFoto(nombreArchivo);
-            
+
+            /*InputStream in = file.getInputStream();
+
+            File f = new File("fotos/" + file.getSubmittedFileName());
+            f.createNewFile();
+            FileOutputStream out = new FileOutputStream(f);
+
+            byte[] buffer = new byte[1024];
+            int length;
+
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+
+            out.close();
+            in.close();*/
+
+            CentrovotacionEntity objCentro = new CentrovotacionEntity();
+
+            objCentro.setIdCentroVotacion((Integer) this.idCentro);
+
+            ciudadanos.setIdCentroVotacion(objCentro);
+
             if (ciudadanosModel.ingresarCiudadanos(ciudadanos) == 0) {
                 JsfUtils.addErrorMessage("fracaso", "Ya existe ese departamento.");
                 return null;
             }
             JsfUtils.addFlashMessage("exito", "Ciudadano insertado exitosamente");
-            return "/gestionVotantes/ingresarCiudadano?faces-redirect=true";
+            return "/gestionVotantes/listaCiudadanos?faces-redirect=true";
         } catch (IOException ex) {
             Logger.getLogger(CiudadanosBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -106,6 +222,13 @@ public class CiudadanosBean {
     }
 
     public String modificarCiudadano() {
+
+        CentrovotacionEntity objCentro = new CentrovotacionEntity();
+
+        objCentro.setIdCentroVotacion((Integer) this.idCentro);
+
+        ciudadanos.setIdCentroVotacion(objCentro);
+
         if (ciudadanosModel.modificarCiudadanos(ciudadanos) == 0) {
             JsfUtils.addErrorMessage("fracaso", "No se pudo modificar");
             return null;
@@ -125,6 +248,19 @@ public class CiudadanosBean {
             JsfUtils.addFlashMessage("fracaso", "No se puede eliminar el registro de este ciudadano");
         }
         return null;
-    }   
+    }
+
+    public void nuevaListaMunicipios() {
+
+        this.listaNuevaMunicipios = ciudadanosModel.listaMunicipiosIdDepa(this.idDepartamento);
+
+    }
+
+    public void nuevaListaCentros() {
+
+        
+        this.listaNuevaCentros = ciudadanosModel.listaCentrosIdMunicip(municipios);
+
+    }
 
 }

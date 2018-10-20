@@ -16,9 +16,10 @@
     <ui:define name="content">
         <h1 class="text-center" style="margin-top: -5%;"> Nuevo ciudadano </h1><br></br>
         <div class="col col-md-12">
-            <h:form enctype="multipart/form-data">
+            <h:form enctype="multipart/form-data" id="formulario">
                 <div class="form-group col-md-8" id="dui">
-                    <h:inputText id="duiCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.duiCiudadano}" title="DuiCiudadano" a:placeholder="Ingresa el DUI" required="true" requiredMessage="The DuiCiudadano field is required."/>
+                    <h:inputText id="duiCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.duiCiudadano}" title="DuiCiudadano" a:placeholder="Ingresa el DUI" required="true" requiredMessage="El DUI es obligatorio"/>
+
                 </div>
                 <div class="form-group col-md-6" id="nombre">
                     <h:inputText id="nombresCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.nombresCiudadano}" title="NombresCiudadano" a:placeholder="Ingresa el nombre" required="true" requiredMessage="The NombresCiudadano field is required."/>
@@ -29,7 +30,7 @@
                 </div>
                 <div class="form-group col-md-6" id="fechaNacimi">
                     <h:inputText id="fechaNacimiento" class="form-control" value="#{ciudadanosBean.ciudadanos.fechaNacimiento}" title="FechaNacimiento" a:placeholder="Ingresa la fecha de nacimiento - (31/12/2000)" required="true" requiredMessage="The FechaNacimiento field is required.">
-                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
                     </h:inputText>                
                 </div>
                 <div class="form-group col-md-6" id="direcc">
@@ -37,29 +38,37 @@
 
                 </div>
                 <div class="row">
+
                     <div class="form-group col-md-5 departa">
-                        <h:outputLabel value="Departamento:" for="departamento" />
-                        <h:selectOneMenu id="departamento" class="form-control" value="#{ciudadanosBean.departamentos}" >
-                            <f:selectItems  value="#{ciudadanosBean.listaDepartamentos}" var="departament" itemValue="#{departament}" itemLabel="#{departament.departamento}" />
-                            <f:ajax event="change" execute="" render="municipio" />
+                        <h:outputLabel value="Departamento:"/>
+                        <h:selectOneMenu id="departamento" class="form-control" value="#{ciudadanosBean.idDepartamento}" >
+                            <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
+                            <f:selectItems  value="#{ciudadanosBean.listaDepartamentos}" var="departament" itemLabel="#{departament.departamento}" itemValue="#{departament.idDepartamento}" />
+
+                            <f:ajax listener="#{ciudadanosBean.nuevaListaMunicipios}" render=":formulario:municipio" />
 
                         </h:selectOneMenu>
                     </div>
 
                     <div class="form-group col-md-5 munici">
-                        <h:outputLabel value="Municipio:" for="municipio" />
-                        <h:selectOneMenu id="municipio" class="form-control" >
-                            <f:selectItem itemLabel=" --- Seleccione --- " />
-                            <f:selectItems  var="municip"  />
+                        <h:outputLabel value="Municipio:" />
+                        <h:selectOneMenu id="municipio" class="form-control" value="#{ciudadanosBean.idMunicipio}" >
+                            <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
+                            <f:selectItems value="#{ciudadanosBean.listaNuevaMunicipios}" var="municip" itemLabel="#{municip.municipio}" itemValue="#{municip.idMunicipio}" />
+
+                            <f:ajax listener="#{ciudadanosBean.nuevaListaCentros}" render=":formulario:idCentroVotacion" />
+
                         </h:selectOneMenu>
                     </div>
 
                     <div class="form-group col-md-6 cent" id="centro">
                         <h:outputLabel value="Elige el centro de votación:" for="idCentroVotacion" />
-                        <h:selectOneMenu id="idCentroVotacion" class="form-control" value="" title="IdCentroVotacion" required="true" requiredMessage="The IdCentroVotacion field is required.">
-                            <f:selectItem itemLabel=" --- Seleccione ---"/>
+                        <h:selectOneMenu id="idCentroVotacion" class="form-control" value="#{ciudadanosBean.idCentro}" >
+                            <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
+                            <f:selectItems value="#{ciudadanosBean.listaNuevaCentros}" var="centr" itemLabel="#{centr.centroVotacion}" itemValue="#{centr.idCentroVotacion}" />
                         </h:selectOneMenu>
                     </div>
+                    
                     <div class="form-group col-md-6" id="url">
                         <h:outputLabel value="Foto:" for="urlFoto" />
                         <h:inputFile id="urlFoto"  value="#{ciudadanosBean.file}" class="form-control file file-loading" /><br></br>

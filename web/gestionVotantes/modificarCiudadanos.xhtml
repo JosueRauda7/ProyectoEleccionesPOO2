@@ -14,8 +14,9 @@
         <h1 class="text-center" style="margin-top: -5%;"> Modificar ciudadano </h1><br></br>
         <div class="col col-md-12">
             <h:form>
-                    <div class="form-group col-md-8" id="dui">
-                    <h:inputText id="duiCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.duiCiudadano}" title="DuiCiudadano" a:placeholder="Ingresa el DUI" required="true" requiredMessage="The DuiCiudadano field is required."/>
+                <div class="form-group col-md-8" id="dui">
+                    <h:inputText id="duiCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.duiCiudadano}" title="DuiCiudadano" a:placeholder="Ingresa el DUI" required="true" requiredMessage="El DUI es obligatorio"/>
+                    <f:validateRegex pattern="[0-9]{8}-[0-9]{1}" />
                 </div>
                 <div class="form-group col-md-6" id="nombre">
                     <h:inputText id="nombresCiudadano" class="form-control" value="#{ciudadanosBean.ciudadanos.nombresCiudadano}" title="NombresCiudadano" a:placeholder="Ingresa el nombre" required="true" requiredMessage="The NombresCiudadano field is required."/>
