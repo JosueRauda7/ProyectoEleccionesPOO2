@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <!-- css -->
         <link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
@@ -60,9 +62,24 @@
         <section  class="container">
             <h1 class="text-center">Bienvenido</h1>
             <h1 class="text-center">#{presidentejrvBean.ciudadano.nombresCiudadano} #{presidentejrvBean.ciudadano.apellidosCiudadano}</h1>
-            <h:form>
-                
+    <ui:repeat var="items" value="#{presidentejrvBean.listaCandidatos}" varStatus="status">
+              
+            <h:form>              
+                  <div style="border: solid black; width: 30%; float: left;margin-left: 1%; margin-bottom: 1%;">
+                        <p>Nombres: #{items.duiCiudadano.nombresCiudadano}</p>
+                        <p>Apellidos:#{items.duiCiudadano.apellidosCiudadano}</p>
+                        <p>Partido politico: #{items.codigoPartido.nombrePartido}</p>
+                        <h:graphicImage value="fotos/#{items.duiCiudadano.urlFoto}"/>
+                        <br></br>
+                      
+                         <h:commandButton  action="#{presidentejrvBean.realizarVoto()}" class="btn btn-info center-block" value="Elegir"  immediate="true"/>
+                    </div>
+           
+    			
             </h:form>
+       
+    </ui:repeat>
+            
         </section>
         <!-- Fin Contenido -->
 

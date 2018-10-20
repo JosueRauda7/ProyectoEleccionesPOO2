@@ -17,8 +17,12 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.HttpServletRequest;
+import sv.edu.udb.www.entities.CandidatosEntity;
+import static sv.edu.udb.www.entities.CandidatosEntity_.duiCiudadano;
+import static sv.edu.udb.www.entities.CandidatosEntity_.idEleccion;
 import sv.edu.udb.www.entities.CentrovotacionEntity;
 import sv.edu.udb.www.entities.CiudadanosEntity;
+import sv.edu.udb.www.entities.ConteovotantesEntity;
 import sv.edu.udb.www.entities.EleccionesEntity;
 import sv.edu.udb.www.entities.JrvEntity;
 import sv.edu.udb.www.model.PresidentejrvModel;
@@ -38,10 +42,32 @@ public class PresidentejrvBean {
     HttpServletRequest request = JsfUtils.getRequest();
     EleccionesEntity eleccion = new EleccionesEntity();
     CiudadanosEntity ciudadano = new CiudadanosEntity();
+    CandidatosEntity candidato = new CandidatosEntity();
+    List<CandidatosEntity> listaCandidatos;
     JrvEntity jrv = new JrvEntity();
+
+    public List<CandidatosEntity> getListaCandidatos() {
+        return listaCandidatos;
+    }
 
     public PresidentejrvBean() {
         request.getSession().setAttribute("valor", 1);
+    }
+
+    public CandidatosEntity getCandidato() {
+        return candidato;
+    }
+
+    public void setCandidato(CandidatosEntity candidato) {
+        this.candidato = candidato;
+    }
+
+    public JrvEntity getJrv() {
+        return jrv;
+    }
+
+    public void setJrv(JrvEntity jrv) {
+        this.jrv = jrv;
     }
 
     public CiudadanosEntity getCiudadano() {
@@ -89,13 +115,28 @@ public class PresidentejrvBean {
     }
 
     public String verificarCiudadano() {
-         jrv = presidentejrvModel.obtenerJrv((int) request.getSession().getAttribute("valor"));
-        ciudadano = presidentejrvModel.verificarCiudadano(ciudadano.getDuiCiudadano(),jrv.getIdJrv());
+        jrv = presidentejrvModel.obtenerJrv((int) request.getSession().getAttribute("valor"));
+        ciudadano = presidentejrvModel.verificarCiudadano(ciudadano.getDuiCiudadano(), jrv.getIdJrv());
         if (ciudadano == null) {
-            JsfUtils.addErrorMessage("duiCiudadano","El dui ingresado no pertenece a esta urna o ya ha emitido su voto");
+            JsfUtils.addErrorMessage("duiCiudadano", "El dui ingresado no pertenece a esta urna o ya ha emitido su voto");
             return null;
         } else {
+            if ("Presidencial".equals(jrv.getIdEleccion().getIdTipoEleccion().getTipoEleccion())) {
+                listaCandidatos = presidentejrvModel.listaCandidatosPresidencial(jrv.getIdEleccion().getIdEleccion());
+                return "procesoVoto";
+            }
             return "procesoVoto";
         }
     }
+
+    public String realizarVoto() {
+//        eleccion = presidentejrvModel.obtenerEleccion(ideleccion);
+//        ciudadano = presidentejrvModel.obtenerCiudadano(duivotante);
+        ConteovotantesEntity conteo = new ConteovotantesEntity();
+        conteo.setDuiCiudadano(ciudadano);
+        conteo.setIdEleccion(eleccion);
+        presidentejrvModel.insertarConteovoto(conteo);
+        return null;
+    }
+
 }

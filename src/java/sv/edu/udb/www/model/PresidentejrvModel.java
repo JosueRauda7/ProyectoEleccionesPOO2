@@ -5,8 +5,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import sv.edu.udb.www.entities.CandidatosEntity;
+import static sv.edu.udb.www.entities.CandidatosEntity_.duiCiudadano;
+import static sv.edu.udb.www.entities.CandidatosEntity_.idEleccion;
 import sv.edu.udb.www.entities.CentrovotacionEntity;
 import sv.edu.udb.www.entities.CiudadanosEntity;
+import sv.edu.udb.www.entities.ConteovotantesEntity;
 import sv.edu.udb.www.entities.EleccionesEntity;
 import sv.edu.udb.www.entities.JrvEntity;
 
@@ -70,6 +74,29 @@ public class PresidentejrvModel {
             return (CiudadanosEntity) query2.getSingleResult();
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public List<CandidatosEntity> listaCandidatosPresidencial(String eleccion) {
+        Query query = em.createNativeQuery("SELECT * FROM candidatos WHERE IdEleccion= ?",CandidatosEntity.class);
+        query.setParameter(1, eleccion);
+        return query.getResultList();
+    }
+    
+    public CiudadanosEntity obtenerCiudadano(String dui){
+      return em.find(CiudadanosEntity.class, dui);
+    }
+    public EleccionesEntity obtenerEleccion(String idelec){
+     return em.find(EleccionesEntity.class, idelec);
+    }
+    
+    public int insertarConteovoto(ConteovotantesEntity conteovot){
+     try {
+            em.persist(conteovot);
+            em.flush();
+            return 1;
+        } catch (Exception e) {
+            return 0;
         }
     }
 }
