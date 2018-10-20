@@ -75,25 +75,12 @@ public class CiudadanosModel {
             return 0;
         }
     }
-
     
-<<<<<<< HEAD
-    public List<CentrovotacionEntity> listaCentrosIdMunicip(int idMunicipio){
-        /*Query query = em.createNativeQuery("SELECT IdCentroVotacion, CentroVotacion FROM centrovotacion WHERE IdMunicipio=?", CentrovotacionEntity.class);
-        query.setParameter(1, idMunicipio);
-        return query.getResultList();*/
-                
-        List<CentrovotacionEntity> centro;
-        centro = m.getCentrovotacionEntityList();
-        return centro;
-=======
-
     public List<CentrovotacionEntity> listaCentrosIdMunicip(int idmunicipio){
           List<CentrovotacionEntity> lista = null;
           MunicipiosEntity municipio = new MunicipiosEntity();
           municipio=em.find(MunicipiosEntity.class, idmunicipio);
           lista=municipio.getCentrovotacionEntityList();
           return lista;
->>>>>>> 7ed9aed8a82e3f00b35ddd64bff10303b1b39e76
     }
 }

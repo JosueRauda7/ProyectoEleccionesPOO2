@@ -1,5 +1,6 @@
 package sv.edu.udb.www.managed_beans;
 
+import com.oreilly.servlet.MultipartRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -145,19 +146,6 @@ public class CiudadanosBean {
         this.listaMunicipios = listaMunicipios;
     }
 
-<<<<<<< HEAD
-=======
-    public List<CentrovotacionEntity> getListaNuevaCentros() {
-        this.listaNuevaCentros = ciudadanosModel.listaCentrosIdMunicip(this.idMunicipio);
-
-        return listaNuevaCentros;
-    }
-
-    public void setListaNuevaCentros(List<CentrovotacionEntity> listaNuevaCentros) {
-        this.listaNuevaCentros = listaNuevaCentros;
-    }
-
->>>>>>> 7ed9aed8a82e3f00b35ddd64bff10303b1b39e76
     public List<CentrovotacionEntity> getListaCentros() {
         listaCentros = ciudadanosModel.listarCentros();
         return listaCentros;
@@ -172,38 +160,47 @@ public class CiudadanosBean {
         return ciudadanosModel.listarCiudadanos();
     }
 
-    
     public String ingresarCiudadano() {
         try {
-            this.idDepartamento = 0;
-            this.idMunicipio = 0;
+           
+//             file.write("fotos/" + getFileName(file));
+//
+//            String nombreArchivo = (String) getFileName(file);
+//
+//            ciudadanos.setUrlFoto(nombreArchivo);
+//
+//            InputStream in = file.getInputStream();
+//
+//            File f = new File("fotos/" + file.getSubmittedFileName());
+//            f.createNewFile();
+//            FileOutputStream out = new FileOutputStream(f);
+//
+//            byte[] buffer = new byte[1024];
+//            int length;
+//
+//            while ((length = in.read(buffer)) > 0) {
+//                out.write(buffer, 0, length);
+//            }
+//
+//            out.close();
+//            in.close();
 
-            file.write("fotos/" + getFileName(file));
+            String url;
+            MultipartRequest multi = null;
+            
+            url = "resources/fotos/" + file;
 
-            String nombreArchivo = (String) getFileName(file);
+    
+            File archivo = multi.getFile(url);
+                        
 
-            ciudadanos.setUrlFoto(nombreArchivo);
-
-            /*InputStream in = file.getInputStream();
-
-            File f = new File("fotos/" + file.getSubmittedFileName());
-            f.createNewFile();
-            FileOutputStream out = new FileOutputStream(f);
-
-            byte[] buffer = new byte[1024];
-            int length;
-
-            while ((length = in.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
-            }
-
-            out.close();
-            in.close();*/
             CentrovotacionEntity objCentro = new CentrovotacionEntity();
 
             objCentro.setIdCentroVotacion((Integer) this.idCentro);
 
             ciudadanos.setIdCentroVotacion(objCentro);
+            
+            ciudadanos.setUrlFoto(archivo.getName());
 
             if (ciudadanosModel.ingresarCiudadanos(ciudadanos) == 0) {
                 JsfUtils.addErrorMessage("fracaso", "Ya existe ese departamento.");
@@ -211,7 +208,7 @@ public class CiudadanosBean {
             }
             JsfUtils.addFlashMessage("exito", "Ciudadano insertado exitosamente");
             return "/gestionVotantes/listaCiudadanos?faces-redirect=true";
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(CiudadanosBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -254,14 +251,8 @@ public class CiudadanosBean {
         return null;
     }
 
-    
-
     public void nuevaListaCentros() {
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 7ed9aed8a82e3f00b35ddd64bff10303b1b39e76
         this.listaNuevaCentros = ciudadanosModel.listaCentrosIdMunicip(this.idMunicipio);
 
     }
