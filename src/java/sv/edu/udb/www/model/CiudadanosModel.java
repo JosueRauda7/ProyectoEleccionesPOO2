@@ -82,7 +82,7 @@ public class CiudadanosModel {
         return query.getResultList();
     }
     
-    public List<CentrovotacionEntity> listaCentrosIdMunicip(MunicipiosEntity m){
+    public List<CentrovotacionEntity> listaCentrosIdMunicip(int idMunicipio){
         /*Query query = em.createNativeQuery("SELECT IdCentroVotacion, CentroVotacion FROM centrovotacion WHERE IdMunicipio=?", CentrovotacionEntity.class);
         query.setParameter(1, idMunicipio);
         return query.getResultList();*/

@@ -119,6 +119,14 @@ public class CiudadanosBean {
         this.listaNuevaMunicipios = listaNuevaMunicipios;
     }
 
+    public List<CentrovotacionEntity> getListaNuevaCentros() {
+        return listaNuevaCentros;
+    }
+
+    public void setListaNuevaCentros(List<CentrovotacionEntity> listaNuevaCentros) {
+        this.listaNuevaCentros = listaNuevaCentros;
+    }
+
     public List<DepartamentosEntity> getListaDepartamentos() {
         listaDepartamentos = ciudadanosModel.listarDepartamentos();
         return listaDepartamentos;
@@ -135,14 +143,6 @@ public class CiudadanosBean {
 
     public void setListaMunicipios(List<MunicipiosEntity> listaMunicipios) {
         this.listaMunicipios = listaMunicipios;
-    }
-
-    public List<CentrovotacionEntity> getListaNuevaCentros() {
-        return listaNuevaCentros;
-    }
-
-    public void setListaNuevaCentros(List<CentrovotacionEntity> listaNuevaCentros) {
-        this.listaNuevaCentros = listaNuevaCentros;
     }
 
     public List<CentrovotacionEntity> getListaCentros() {
@@ -172,11 +172,11 @@ public class CiudadanosBean {
         try {
             this.idDepartamento = 0;
             this.idMunicipio = 0;
-            
+
             file.write("fotos/" + getFileName(file));
 
             String nombreArchivo = (String) getFileName(file);
-            
+
             ciudadanos.setUrlFoto(nombreArchivo);
 
             /*InputStream in = file.getInputStream();
@@ -194,7 +194,6 @@ public class CiudadanosBean {
 
             out.close();
             in.close();*/
-
             CentrovotacionEntity objCentro = new CentrovotacionEntity();
 
             objCentro.setIdCentroVotacion((Integer) this.idCentro);
@@ -258,8 +257,7 @@ public class CiudadanosBean {
 
     public void nuevaListaCentros() {
 
-        
-        this.listaNuevaCentros = ciudadanosModel.listaCentrosIdMunicip(municipios);
+        this.listaNuevaCentros = ciudadanosModel.listaCentrosIdMunicip(this.idMunicipio);
 
     }
 
