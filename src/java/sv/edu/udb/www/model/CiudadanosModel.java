@@ -5,6 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import sv.edu.udb.www.entities.CentrovotacionEntity;
 import sv.edu.udb.www.entities.CiudadanosEntity;
 import sv.edu.udb.www.entities.DepartamentosEntity;
 import sv.edu.udb.www.entities.MunicipiosEntity;
@@ -16,19 +17,23 @@ public class CiudadanosModel {
     private EntityManager em;
 
     // Métodos para listar
-    
     public List<CiudadanosEntity> listarCiudadanos() {
         Query query = em.createNamedQuery("CiudadanosEntity.findAll");
         return query.getResultList();
-    }    
-    
-    public List<DepartamentosEntity> listarDepartamentos(){
+    }
+
+    public List<DepartamentosEntity> listarDepartamentos() {
         Query query = em.createNamedQuery("DepartamentosEntity.findAll");
         return query.getResultList();
     }
-    
-    public List<MunicipiosEntity> listarMunicipios(){
+
+    public List<MunicipiosEntity> listarMunicipios() {
         Query query = em.createNamedQuery("MunicipiosEntity.findAll");
+        return query.getResultList();
+    }
+    
+    public List<CentrovotacionEntity> listarCentros(){
+        Query query = em.createNamedQuery("CentrovotacionEntity.findAll");
         return query.getResultList();
     }
 
@@ -70,9 +75,20 @@ public class CiudadanosModel {
             return 0;
         }
     }
-    
-    /*public List<DepartamentosEntity> listaDepartamentos(){
-        Query query = em.createNamedQuery("DepartamentosEntity.findByDepartamento");
+
+    public List<MunicipiosEntity> listaMunicipiosIdDepa(int idDepartamento) {
+        Query query = em.createNativeQuery("SELECT IdMunicipio, Municipio FROM municipios WHERE IdDepartamento=?", MunicipiosEntity.class);
+        query.setParameter(1, idDepartamento);
         return query.getResultList();
-    }*/
+    }
+    
+    public List<CentrovotacionEntity> listaCentrosIdMunicip(MunicipiosEntity m){
+        /*Query query = em.createNativeQuery("SELECT IdCentroVotacion, CentroVotacion FROM centrovotacion WHERE IdMunicipio=?", CentrovotacionEntity.class);
+        query.setParameter(1, idMunicipio);
+        return query.getResultList();*/
+                
+        List<CentrovotacionEntity> centro;
+        centro = m.getCentrovotacionEntityList();
+        return centro;
+    }
 }
