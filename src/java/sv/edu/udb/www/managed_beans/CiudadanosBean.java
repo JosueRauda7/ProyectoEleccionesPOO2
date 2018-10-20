@@ -145,6 +145,19 @@ public class CiudadanosBean {
         this.listaMunicipios = listaMunicipios;
     }
 
+<<<<<<< HEAD
+=======
+    public List<CentrovotacionEntity> getListaNuevaCentros() {
+        this.listaNuevaCentros = ciudadanosModel.listaCentrosIdMunicip(this.idMunicipio);
+
+        return listaNuevaCentros;
+    }
+
+    public void setListaNuevaCentros(List<CentrovotacionEntity> listaNuevaCentros) {
+        this.listaNuevaCentros = listaNuevaCentros;
+    }
+
+>>>>>>> 7ed9aed8a82e3f00b35ddd64bff10303b1b39e76
     public List<CentrovotacionEntity> getListaCentros() {
         listaCentros = ciudadanosModel.listarCentros();
         return listaCentros;
@@ -159,15 +172,7 @@ public class CiudadanosBean {
         return ciudadanosModel.listarCiudadanos();
     }
 
-    /*public List<DepartamentosEntity> getListaDepartamentos() {
-        listaDepartamentos = ciudadanosModel.listarDepartamentos();
-        return listaDepartamentos;
-    }*/
-
- /*public List<MunicipiosEntity> getListaMunicipios() {
-        listaMunicipios = ciudadanosModel.listarMunicipios();
-        return listaMunicipios;
-    }*/
+    
     public String ingresarCiudadano() {
         try {
             this.idDepartamento = 0;
@@ -249,14 +254,14 @@ public class CiudadanosBean {
         return null;
     }
 
-    public void nuevaListaMunicipios() {
-
-        this.listaNuevaMunicipios = ciudadanosModel.listaMunicipiosIdDepa(this.idDepartamento);
-
-    }
+    
 
     public void nuevaListaCentros() {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 7ed9aed8a82e3f00b35ddd64bff10303b1b39e76
         this.listaNuevaCentros = ciudadanosModel.listaCentrosIdMunicip(this.idMunicipio);
 
     }

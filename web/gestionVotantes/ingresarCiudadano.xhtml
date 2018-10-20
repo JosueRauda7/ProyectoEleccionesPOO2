@@ -38,23 +38,12 @@
 
                 </div>
                 <div class="row">
-
-                    <div class="form-group col-md-5 departa">
-                        <h:outputLabel value="Departamento:"/>
-                        <h:selectOneMenu id="departamento" class="form-control" value="#{ciudadanosBean.idDepartamento}" >
-                            <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
-                            <f:selectItems  value="#{ciudadanosBean.listaDepartamentos}" var="departament" itemLabel="#{departament.departamento}" itemValue="#{departament.idDepartamento}" />
-
-                            <f:ajax listener="#{ciudadanosBean.nuevaListaMunicipios}" render=":formulario:municipio" />
-
-                        </h:selectOneMenu>
-                    </div>
-
+                    
                     <div class="form-group col-md-5 munici">
                         <h:outputLabel value="Municipio:" />
                         <h:selectOneMenu id="municipio" class="form-control" value="#{ciudadanosBean.idMunicipio}" >
                             <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
-                            <f:selectItems value="#{ciudadanosBean.listaNuevaMunicipios}" var="municip" itemLabel="#{municip.municipio}" itemValue="#{municip.idMunicipio}" />
+                            <f:selectItems value="#{ciudadanosBean.listaMunicipios}" var="municip" itemLabel="#{municip.municipio}" itemValue="#{municip.idMunicipio}" />
 
                             <f:ajax listener="#{ciudadanosBean.nuevaListaCentros}" render=":formulario:idCentroVotacion" />
 
