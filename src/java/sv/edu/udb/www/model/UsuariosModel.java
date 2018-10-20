@@ -14,6 +14,7 @@ import javax.persistence.Query;
 import sv.edu.udb.www.entities.MiembrojrvEntity;
 import sv.edu.udb.www.entities.TipousuarioEntity;
 import sv.edu.udb.www.entities.UsuariosEntity;
+import sv.edu.udb.www.utils.SecurityUtils;
 
 /**
  *
@@ -177,4 +178,16 @@ public class UsuariosModel {
             return null;
         }
     }
+    
+    public UsuariosEntity verificarCredenciales(String usuario, String clave){
+       try{
+       Query query = em.createQuery("select u from UsuariosEntity u where u.idUsuario=:usuario and u.contrasena=:clave");
+       query.setParameter("usuario", usuario);
+       query.setParameter("clave", clave);
+       return (UsuariosEntity) query.getSingleResult();
+       }
+       catch(Exception e){
+           return null;
+       }
+   }
 }
