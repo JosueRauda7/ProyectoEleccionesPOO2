@@ -86,7 +86,19 @@ public class Filtro implements Filter {
             wrappedResponse.sendRedirect(wrappedRequest.getContextPath() + "/faces/login.xhtml");
             return;
         }
-        if (url.contains("/resources")) {
+        if (url.contains("/css")) {
+            chain.doFilter(request, response);
+            return;
+        }
+        if (url.contains("/js")) {
+            chain.doFilter(request, response);
+            return;
+        }
+        if (url.contains("/resources/img")) {
+            chain.doFilter(request, response);
+            return;
+        }
+        if (url.contains("/fonts")) {
             chain.doFilter(request, response);
             return;
         }
