@@ -55,9 +55,7 @@
                         <h:selectOneMenu id="municipio" class="form-control" value="#{ciudadanosBean.idMunicipio}" >
                             <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
                             <f:selectItems value="#{ciudadanosBean.listaNuevaMunicipios}" var="municip" itemLabel="#{municip.municipio}" itemValue="#{municip.idMunicipio}" />
-
-                            <f:ajax listener="#{ciudadanosBean.nuevaListaCentros}" render=":formulario:idCentroVotacion" />
-
+                            <f:ajax listener="#{ciudadanosBean.listaNuevaCentros}" render=":formulario:idCentroVotacion" />
                         </h:selectOneMenu>
                     </div>
 

@@ -77,18 +77,16 @@ public class CiudadanosModel {
     }
 
     public List<MunicipiosEntity> listaMunicipiosIdDepa(int idDepartamento) {
-        Query query = em.createNativeQuery("SELECT IdMunicipio, Municipio FROM municipios WHERE IdDepartamento=?", MunicipiosEntity.class);
+        Query query = em.createNativeQuery("SELECT * FROM municipios WHERE IdDepartamento=?", MunicipiosEntity.class);
         query.setParameter(1, idDepartamento);
         return query.getResultList();
     }
     
-    public List<CentrovotacionEntity> listaCentrosIdMunicip(MunicipiosEntity m){
-        /*Query query = em.createNativeQuery("SELECT IdCentroVotacion, CentroVotacion FROM centrovotacion WHERE IdMunicipio=?", CentrovotacionEntity.class);
+    public List<CentrovotacionEntity> listaCentrosIdMunicip(int idMunicipio){
+        Query query = em.createNativeQuery("SELECT IdCentroVotacion, CentroVotacion FROM centrovotacion WHERE IdMunicipio=?", CentrovotacionEntity.class);
         query.setParameter(1, idMunicipio);
-        return query.getResultList();*/
+        return query.getResultList();
                 
-        List<CentrovotacionEntity> centro;
-        centro = m.getCentrovotacionEntityList();
-        return centro;
+       
     }
 }
