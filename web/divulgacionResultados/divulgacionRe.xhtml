@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templateDivulgacion.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="top">
+        Divulgacion de resultados
+    </ui:define>
+
+    <ui:define name="content">
+        <div>
+            <div class="row">
+                <p:barChart value="#{detalleVotoBean.listaResultados}" legendPosition=""
+                            title="Resultados Elecciones" style="height:300px"
+                            xaxisLabel="Candidato" yaxisLabel="Numero de votos"/>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

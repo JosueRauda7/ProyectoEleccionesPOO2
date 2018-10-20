@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group col-md-6" id="fechaNacimi">
                     <h:inputText id="fechaNacimiento" class="form-control" value="#{ciudadanosBean.ciudadanos.fechaNacimiento}" title="FechaNacimiento" a:placeholder="Ingresa la fecha de nacimiento - (31/12/2000)" required="true" requiredMessage="The FechaNacimiento field is required.">
-                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
                     </h:inputText>                
                 </div>
                 <div class="form-group col-md-6" id="direcc">
@@ -38,30 +38,19 @@
 
                 </div>
                 <div class="row">
-                    
-                    <div class="form-group col-md-5 munici">
-                        <h:outputLabel value="Municipio:" />
-                        <h:selectOneMenu id="municipio" class="form-control" value="#{ciudadanosBean.idMunicipio}" >
-                            <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
-                            <f:selectItems value="#{ciudadanosBean.listaMunicipios}" var="municip" itemLabel="#{municip.municipio}" itemValue="#{municip.idMunicipio}" />
-
-                            <f:ajax listener="#{ciudadanosBean.nuevaListaCentros}" render=":formulario:idCentroVotacion" />
-
-                        </h:selectOneMenu>
-                    </div>
 
                     <div class="form-group col-md-6 cent" id="centro">
                         <h:outputLabel value="Elige el centro de votación:" for="idCentroVotacion" />
-                        <h:selectOneMenu id="idCentroVotacion" class="form-control" value="#{ciudadanosBean.idCentro}" >
-                            <f:selectItem itemLabel="--- Seleccione ---" itemValue="0" />
-                            <f:selectItems value="#{ciudadanosBean.listaNuevaCentros}" var="centr" itemLabel="#{centr.centroVotacion}" itemValue="#{centr.idCentroVotacion}" />
+                        <h:selectOneMenu id="idCentroVotacion" class="form-control" value="#{ciudadanosBean.ciudadanos.idCentroVotacion}" >
+                            <f:selectItem itemLabel="--- Selecciones ---" itemValue="0" />
+                            <f:selectItems value="#{ciudadanosBean.listaCentros}" var="centr" itemLabel="#{centr.centroVotacion}" itemValue="#{centr}" />
                         </h:selectOneMenu>
                     </div>
-                    
                     <div class="form-group col-md-6" id="url">
                         <h:outputLabel value="Foto:" for="urlFoto" />
-                        <h:inputFile id="urlFoto" value="#{ciudadanosBean.file}" class="form-control file file-loading" /><br></br>
+                        <h:inputFile id="urlFoto"  value="#{ciudadanosBean.ciudadanos.urlFoto}" class="form-control file file-loading" /><br></br>
                     </div>
+
                 </div>
                 <div id="Aceptar">
                     <h:commandButton value="Aceptar" class="btn btn-success col-md-6" action="#{ciudadanosBean.ingresarCiudadano()}" />

@@ -31,8 +31,8 @@ public class CiudadanosModel {
         Query query = em.createNamedQuery("MunicipiosEntity.findAll");
         return query.getResultList();
     }
-    
-    public List<CentrovotacionEntity> listarCentros(){
+
+    public List<CentrovotacionEntity> listarCentros() {
         Query query = em.createNamedQuery("CentrovotacionEntity.findAll");
         return query.getResultList();
     }
@@ -75,12 +75,17 @@ public class CiudadanosModel {
             return 0;
         }
     }
-    
-    public List<CentrovotacionEntity> listaCentrosIdMunicip(int idmunicipio){
-          List<CentrovotacionEntity> lista = null;
-          MunicipiosEntity municipio = new MunicipiosEntity();
-          municipio=em.find(MunicipiosEntity.class, idmunicipio);
-          lista=municipio.getCentrovotacionEntityList();
-          return lista;
+
+    public List<CentrovotacionEntity> listaCentrosIdMunicip(int idMunicipio) {
+        
+        Query query = em.createNativeQuery("SELECT IdCentroVotacion, CentroVotacion FROM centrovotacion WHERE IdMunicipio=?", CentrovotacionEntity.class);
+        query.setParameter(1, idMunicipio);
+        return query.getResultList();
+        
+//        List<CentrovotacionEntity> lista = null;
+//        MunicipiosEntity municipio = new MunicipiosEntity();
+//        municipio = em.find(MunicipiosEntity.class, idmunicipio);
+//        lista = municipio.getCentrovotacionEntityList();
+//        return lista;
     }
 }

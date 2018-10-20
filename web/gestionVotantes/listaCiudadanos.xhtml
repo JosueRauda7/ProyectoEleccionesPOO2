@@ -23,19 +23,19 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="NombresCiudadano"/>
+                        <h:outputText value="Nombres"/>
                     </f:facet>
                     <h:outputText value="#{item.nombresCiudadano}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="ApellidosCiudadano"/>
+                        <h:outputText value="Apellidos"/>
                     </f:facet>
                     <h:outputText value="#{item.apellidosCiudadano}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="FechaNacimiento"/>
+                        <h:outputText value="Fecha de nacimiento"/>
                     </f:facet>
                     <h:outputText value="#{item.fechaNacimiento}">
                         <f:convertDateTime pattern="dd/MM/yyyy" />
@@ -43,19 +43,19 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Direccion"/>
+                        <h:outputText value="Dirección"/>
                     </f:facet>
                     <h:outputText value="#{item.direccion}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="UrlFoto"/>
+                        <h:outputText value="Fotogragia"/>
                     </f:facet>
                     <h:outputText value="#{item.urlFoto}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="IdCentroVotacion"/>
+                        <h:outputText value="Centro de votación"/>
                     </f:facet>
                     <h:outputText value="#{item.idCentroVotacion.centroVotacion}"/>
                 </h:column>
@@ -64,11 +64,11 @@
                         <h:outputText value="Operaciones"/>
                     </f:facet>
                     <h:commandLink class="btn btn-info" action="#{ciudadanosBean.obtenerCiudadano()}">
-                        <i class="glyphicon glyphicon-edit"></i> 
+                        <span class="glyphicon glyphicon-edit"></span> 
                         <f:param name="codigo" value="#{item.duiCiudadano}" />
                     </h:commandLink>    
                     <h:commandLink class="btn btn-danger" style="margin-left: 5px;" onclick="return confirmar();" action="#{ciudadanosBean.eliminarCiudadano()}">
-                        <i class="glyphicon glyphicon-trash"></i>
+                        <span class="glyphicon glyphicon-trash"></span>
                         <f:param name="codigo" value="#{item.duiCiudadano}" />
                     </h:commandLink>
                 </h:column>

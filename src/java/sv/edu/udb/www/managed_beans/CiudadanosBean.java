@@ -5,12 +5,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
@@ -41,7 +44,6 @@ public class CiudadanosBean {
 
     private List<DepartamentosEntity> listaDepartamentos;
     private List<MunicipiosEntity> listaMunicipios;
-    private List<MunicipiosEntity> listaNuevaMunicipios;
     private List<CentrovotacionEntity> listaCentros;
     private List<CentrovotacionEntity> listaNuevaCentros;
 
@@ -112,14 +114,6 @@ public class CiudadanosBean {
         this.idCentro = idCentro;
     }
 
-    public List<MunicipiosEntity> getListaNuevaMunicipios() {
-        return listaNuevaMunicipios;
-    }
-
-    public void setListaNuevaMunicipios(List<MunicipiosEntity> listaNuevaMunicipios) {
-        this.listaNuevaMunicipios = listaNuevaMunicipios;
-    }
-
     public List<CentrovotacionEntity> getListaNuevaCentros() {
         return listaNuevaCentros;
     }
@@ -161,46 +155,20 @@ public class CiudadanosBean {
     }
 
     public String ingresarCiudadano() {
+        if (file.getSubmittedFileName().toString().endsWith("jpg") || file.getSubmittedFileName().toString().endsWith("jpeg") || file.getSubmittedFileName().toString().endsWith("png")) {
+
+        } else {
+            JsfUtils.addErrorMessage("mensajeError", "Debe seleccionar un archivo de imagen");
+            return null;
+        }
+
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+
         try {
-           
-//             file.write("fotos/" + getFileName(file));
-//
-//            String nombreArchivo = (String) getFileName(file);
-//
-//            ciudadanos.setUrlFoto(nombreArchivo);
-//
-//            InputStream in = file.getInputStream();
-//
-//            File f = new File("fotos/" + file.getSubmittedFileName());
-//            f.createNewFile();
-//            FileOutputStream out = new FileOutputStream(f);
-//
-//            byte[] buffer = new byte[1024];
-//            int length;
-//
-//            while ((length = in.read(buffer)) > 0) {
-//                out.write(buffer, 0, length);
-//            }
-//
-//            out.close();
-//            in.close();
 
-            String url;
-            MultipartRequest multi = null;
-            
-            url = "resources/fotos/" + file;
-
-    
-            File archivo = multi.getFile(url);
-                        
-
-            CentrovotacionEntity objCentro = new CentrovotacionEntity();
-
-            objCentro.setIdCentroVotacion((Integer) this.idCentro);
-
-            ciudadanos.setIdCentroVotacion(objCentro);
-            
-            ciudadanos.setUrlFoto(archivo.getName());
+            InputStream input = file.getInputStream();
+            ciudadanos.setUrlFoto(file.getSubmittedFileName());
+            Files.copy(input, new File(path + "/resources/fotos/", ciudadanos.getUrlFoto()).toPath());
 
             if (ciudadanosModel.ingresarCiudadanos(ciudadanos) == 0) {
                 JsfUtils.addErrorMessage("fracaso", "Ya existe ese departamento.");
@@ -208,7 +176,7 @@ public class CiudadanosBean {
             }
             JsfUtils.addFlashMessage("exito", "Ciudadano insertado exitosamente");
             return "/gestionVotantes/listaCiudadanos?faces-redirect=true";
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             Logger.getLogger(CiudadanosBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -224,19 +192,32 @@ public class CiudadanosBean {
 
     public String modificarCiudadano() {
 
-        CentrovotacionEntity objCentro = new CentrovotacionEntity();
+        if (file.getSubmittedFileName().toString().endsWith("jpg") || file.getSubmittedFileName().toString().endsWith("jpeg") || file.getSubmittedFileName().toString().endsWith("png")) {
 
-        objCentro.setIdCentroVotacion((Integer) this.idCentro);
-
-        ciudadanos.setIdCentroVotacion(objCentro);
-
-        if (ciudadanosModel.modificarCiudadanos(ciudadanos) == 0) {
-            JsfUtils.addErrorMessage("fracaso", "No se pudo modificar");
+        } else {
+            JsfUtils.addErrorMessage("mensajeError", "Debe seleccionar un archivo de imagen");
             return null;
         }
 
-        JsfUtils.addFlashMessage("exito", "El registro del ciudadano se ha modificado");
-        return "/gestionVotantes/listaEditoriales?faces-redirect=true";
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+
+        try {
+
+            InputStream input = file.getInputStream();
+            ciudadanos.setUrlFoto(file.getSubmittedFileName());
+            Files.copy(input, new File(path + "/resources/fotos/", ciudadanos.getUrlFoto()).toPath());
+
+            if (ciudadanosModel.modificarCiudadanos(ciudadanos) == 0) {
+                JsfUtils.addErrorMessage("fracaso", "No se pudo modificar");
+                return null;
+            }
+
+            JsfUtils.addFlashMessage("exito", "El registro del ciudadano se ha modificado");
+            return "/gestionVotantes/listaEditoriales?faces-redirect=true";
+        } catch (IOException e) {
+            Logger.getLogger(CiudadanosBean.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
     }
 
     public String eliminarCiudadano() {
