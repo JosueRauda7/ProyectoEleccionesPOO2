@@ -86,6 +86,10 @@ public class Filtro implements Filter {
             wrappedResponse.sendRedirect(wrappedRequest.getContextPath() + "/faces/login.xhtml");
             return;
         }
+        if (url.contains("/resources")) {
+            chain.doFilter(request, response);
+            return;
+        }
         if (url.contains("login.xhtml") && (wrappedRequest.getSession().getAttribute("rol") == null)) {
             chain.doFilter(request, response);
             return;

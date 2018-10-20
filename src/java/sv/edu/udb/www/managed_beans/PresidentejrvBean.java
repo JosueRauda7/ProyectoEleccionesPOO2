@@ -89,9 +89,10 @@ public class PresidentejrvBean {
     }
 
     public String verificarCiudadano() {
-        ciudadano = presidentejrvModel.verificarCiudadano(ciudadano.getDuiCiudadano());
+         jrv = presidentejrvModel.obtenerJrv((int) request.getSession().getAttribute("valor"));
+        ciudadano = presidentejrvModel.verificarCiudadano(ciudadano.getDuiCiudadano(),jrv.getIdJrv());
         if (ciudadano == null) {
-            JsfUtils.addFlashMessage("fracaso", "No se puede eliminar esta editorial");
+            JsfUtils.addErrorMessage("duiCiudadano","El dui ingresado no pertenece a esta urna o ya ha emitido su voto");
             return null;
         } else {
             return "procesoVoto";
