@@ -96,7 +96,7 @@
                                 </h:panelGroup>
                                 <div class="form-group">
                                     <h:outputLabel value="Partido:" for="codigoPartido" />
-                                    <h:selectOneMenu styleClass="form-control" id="codigoPartido" value="#{candidatosBean.candidato.codigoPartido}" title="CodigoPartido" required="true" requiredMessage="The CodigoPartido field is required.">
+                                    <h:selectOneMenu styleClass="form-control" id="codigoPartido" value="#{candidatosBean.candidato.codigoPartido}" title="CodigoPartido" required="true" requiredMessage="Ingrese un partido político.">
                                         <!-- TODO: update below reference to list of available items-->
                                         <f:selectItems value="#{candidatosBean.listaPartidos}" var="partido"
                                                        itemValue="#{partido}" itemLabel="#{partido.nombrePartido}"/>

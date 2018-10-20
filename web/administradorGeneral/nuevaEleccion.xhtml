@@ -103,25 +103,25 @@
                             </div>
                             <div class="form-group">
                                 <h:outputLabel value="Fecha de Inicio:" for="fechaInicio" />
-                                <h:inputText id="fechaInicio" a:type="date" styleClass="form-control" value="#{eleccionesBean.eleccion.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                <h:inputText id="fechaInicio" a:type="date" styleClass="form-control" value="#{eleccionesBean.eleccion.fechaInicio}" title="FechaInicio" required="true" requiredMessage="Ingrese una fecha de Inicio.">
                                     <f:convertDateTime pattern="yyyy-MM-dd"/>
                                 </h:inputText>
                             </div>
                             <div class="form-group">
                                 <h:outputLabel value="Fecha de Registro:" for="fechaRegistro" />
-                                <h:inputText id="fechaRegistro" a:type="date" styleClass="form-control" value="#{eleccionesBean.eleccion.fechaRegistro}" title="FechaRegistro" required="true" requiredMessage="The FechaRegistro field is required.">
+                                <h:inputText id="fechaRegistro" a:type="date" styleClass="form-control" value="#{eleccionesBean.eleccion.fechaRegistro}" title="FechaRegistro" required="true" requiredMessage="Ingrese una fecha de Registro.">
                                     <f:convertDateTime pattern="yyyy-MM-dd"/>
                                 </h:inputText>
                             </div>
                             <div class="form-group">
                                 <h:outputLabel value="Fecha Fin de Registro:" for="fechaFinRegistro" />
-                                <h:inputText id="fechaFinRegistro" a:type="date" styleClass="form-control" value="#{eleccionesBean.eleccion.fechaFinRegistro}" title="FechaFinRegistro" required="true" requiredMessage="The FechaFinRegistro field is required.">
+                                <h:inputText id="fechaFinRegistro" a:type="date" styleClass="form-control" value="#{eleccionesBean.eleccion.fechaFinRegistro}" title="FechaFinRegistro" required="true" requiredMessage="Ingrese la fecha en la se finalizarán los registros.">
                                     <f:convertDateTime pattern="yyyy-MM-dd"/>
                                 </h:inputText>
                             </div>
                             <div class="form-group">
                                 <h:outputLabel value="Tipo de Elección:" for="idTipoEleccion" />
-                                <h:selectOneMenu id="idTipoEleccion" styleClass="form-control" value="#{eleccionesBean.eleccion.idTipoEleccion}" title="IdTipoEleccion" required="true" requiredMessage="The IdTipoEleccion field is required.">
+                                <h:selectOneMenu id="idTipoEleccion" styleClass="form-control" value="#{eleccionesBean.eleccion.idTipoEleccion}" title="IdTipoEleccion" required="true" requiredMessage="Ingrese un tipo de elección.">
                                     <!-- TODO: update below reference to list of available items-->
                                     <f:selectItems value="#{eleccionesBean.listaTiposElecciones}" var="tipoEleccion"
                                                    itemValue="#{tipoEleccion}" itemLabel="#{tipoEleccion.tipoEleccion}"/>

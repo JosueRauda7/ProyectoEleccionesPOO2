@@ -5,6 +5,7 @@
  */
 package sv.edu.udb.www.managed_beans;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -114,12 +115,16 @@ public class CandidatosBean {
     //metodos candidato consejo municipal
     public String guardarCandidatoMunicipal(){
         candidato.setDuiCiudadano(candidatosModel.obtenerCiudadano(dui));
+        if(!candidato.getIdEleccion().getFechaRegistro().before(new Date()) && !candidato.getIdEleccion().getFechaFinRegistro().after(new Date())){
+            JsfUtils.addErrorMessage("idCandidato", "Agregue el candidato entre las fechas de registro.");
+            return null;
+        }
         if(candidatosModel.insertarCandidato(candidato)==0){
             JsfUtils.addErrorMessage("idCandidato", "Ya existe ese candidato.");
             return null;
         }
         JsfUtils.addFlashMessage("exito", "Candidato agregado exitosamente.");
-        return "/administradorGeneral/listaCandidatosConsejoMunicipal?faces-redirect=true";
+        return "/administradorDepartamental/listaCandidatosConsejoMunicipal?faces-redirect=true";
     }
     
 }

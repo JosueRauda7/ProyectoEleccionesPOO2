@@ -97,19 +97,21 @@
                                 </h:panelGroup>
                                 <div class="form-group">
                                     <h:outputLabel value="Nombre:" for="nombreUsuario" />
-                                    <h:inputText styleClass="form-control" id="nombreUsuario" value="#{usuariosBean.empleadoRNPN.nombreUsuario}" title="NombreUsuario" required="true" requiredMessage="The NombreUsuario field is required."/>
+                                    <h:inputText styleClass="form-control" id="nombreUsuario" value="#{usuariosBean.empleadoRNPN.nombreUsuario}" title="NombreUsuario" required="true" requiredMessage="Ingrese el nombre del empleado."/>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel value="Apellido:" for="apellidoUsuario" />
-                                    <h:inputText styleClass="form-control" id="apellidoUsuario" value="#{usuariosBean.empleadoRNPN.apellidoUsuario}" title="ApellidoUsuario" required="true" requiredMessage="The ApellidoUsuario field is required."/>
+                                    <h:inputText styleClass="form-control" id="apellidoUsuario" value="#{usuariosBean.empleadoRNPN.apellidoUsuario}" title="ApellidoUsuario" required="true" requiredMessage="Ingrese el apellido del empleado."/>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel value="Correo:" for="correo" />
-                                    <h:inputText styleClass="form-control" id="correo" value="#{usuariosBean.empleadoRNPN.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                                    <h:inputText styleClass="form-control" id="correo" validatorMessage="Ingrese un correo valido." value="#{usuariosBean.empleadoRNPN.correo}" title="Correo" required="true" requiredMessage="El correo es requerido.">
+                                        <f:validateRegex pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+                                    </h:inputText>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel value="Departamento:" for="idDepartamento" />
-                                    <h:selectOneMenu styleClass="form-control" id="idDepartamento" value="#{usuariosBean.empleadoRNPN.idDepartamento}" title="IdDepartamento" required="true" requiredMessage="The IdDepartamento field is required.">
+                                    <h:selectOneMenu styleClass="form-control" id="idDepartamento" value="#{usuariosBean.empleadoRNPN.idDepartamento}" title="IdDepartamento" required="true" requiredMessage="Ingrese un departamento.">
                                         <!-- TODO: update below reference to list of available items-->
                                         <f:selectItems value="#{usuariosBean.listaDepartamentos}" var="departamento"
                                                        itemValue="#{departamento}" itemLabel="#{departamento.departamento}"/>

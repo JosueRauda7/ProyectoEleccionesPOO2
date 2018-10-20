@@ -96,11 +96,11 @@
                                 </h:panelGroup>
                                 <div class="form-group">
                                     <h:outputLabel value="Municipio:" for="municipio" />
-                                    <h:inputText styleClass="form-control" id="municipio" value="#{municipiosBean.municipio.municipio}" title="Municipio" required="true" requiredMessage="The Municipio field is required."/>
+                                    <h:inputText styleClass="form-control" id="municipio" value="#{municipiosBean.municipio.municipio}" title="Municipio" required="true" requiredMessage="Ingrese el nombre del municipio."/>
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel value="Departamento:" for="idDepartamento" />
-                                    <h:selectOneMenu styleClass="form-control" id="idDepartamento" value="#{municipiosBean.municipio.idDepartamento}" title="IdDepartamento" required="true" requiredMessage="The IdDepartamento field is required.">
+                                    <h:selectOneMenu styleClass="form-control" id="idDepartamento" value="#{municipiosBean.municipio.idDepartamento}" title="IdDepartamento" required="true" requiredMessage="El departamento es requerido.">
                                         <!-- TODO: update below reference to list of available items-->
                                         <f:selectItems value="#{municipiosBean.listaDepartamentos}" var="departamento"
                                                        itemValue="#{departamento}" itemLabel="#{departamento.departamento}"/>

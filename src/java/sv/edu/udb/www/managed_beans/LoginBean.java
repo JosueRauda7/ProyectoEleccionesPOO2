@@ -63,7 +63,7 @@ public class LoginBean {
                     return "/administradorDepartamental/index?faces-redirect=true";
                 case 3:
                     MiembrojrvEntity miembro = new MiembrojrvEntity();
-                    if (miembrosJrvModel.obtenerMiembroJRV2(user) == null) {
+                    if (miembrosJrvModel.obtenerMiembroJRV2(user) != null) {
                         miembro = miembrosJrvModel.obtenerMiembroJRV2(user);
                         request.getSession().setAttribute("usuario",miembro.getIdMiembroJrv());
                         return "/procesoVoto/indexVotantes?faces-redirect=true";

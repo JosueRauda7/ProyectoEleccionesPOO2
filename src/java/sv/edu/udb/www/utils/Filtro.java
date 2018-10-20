@@ -14,6 +14,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import javax.faces.application.ResourceHandler;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -89,6 +90,11 @@ public class Filtro implements Filter {
             chain.doFilter(request, response);
             return;
         }
+        if(url.contains("/javax.faces.resource")){
+            chain.doFilter(request, response);
+            return;
+        }
+        
         int perfil = Integer.parseInt(wrappedRequest.getSession().getAttribute("rol").toString());
         switch (perfil) {
             case 1:

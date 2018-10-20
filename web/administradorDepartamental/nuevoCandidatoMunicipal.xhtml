@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel value="Elección:" for="idEleccion" />
-                                    <h:selectOneMenu styleClass="form-control" id="idEleccion" value="#{candidatosBean.candidato.idEleccion}" title="IdEleccion" required="true" requiredMessage="The IdEleccion field is required.">
+                                    <h:selectOneMenu styleClass="form-control" id="idEleccion" value="#{candidatosBean.candidato.idEleccion}" title="IdEleccion" required="true" requiredMessage="La elección es requerida.">
                                         <!-- TODO: update below reference to list of available items-->
                                         <f:selectItems value="#{candidatosBean.listaEleccionesMunicipales}" var="eleccionMunicipal"
                                                        itemValue="#{eleccionMunicipal}" itemLabel="#{eleccionMunicipal.descripcionEleccion}"/>
